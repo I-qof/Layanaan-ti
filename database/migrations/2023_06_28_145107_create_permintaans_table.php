@@ -23,7 +23,6 @@ return new class extends Migration
             $table->dateTime('tgl_keluar');
             $table->integer('id_status');
             $table->string('nama_pengambil');
-            $table->integer('id_status');
             $table->integer('deleted');
             $table->timestamps();
         });
