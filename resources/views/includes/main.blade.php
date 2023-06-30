@@ -17,14 +17,15 @@
 
 <div id="wrapper">
 
-    @include('includes.header')
+    {{-- @include('includes.header') --}}
 
     @include('includes.sidebar')
 
-    <div id="main-content">
-        <div class="container-fluid">
+    <div id="main-panel">
+        <div class="container-wrapper">
             @yield('content')
         </div>
+        @include('includes.footer')
     </div>
 
 </div>

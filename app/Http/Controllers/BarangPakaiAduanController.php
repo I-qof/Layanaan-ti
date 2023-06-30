@@ -10,54 +10,64 @@ class BarangPakaiAduanController extends Controller
     
     public function index()
     {
-        //
+       $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted = 1");
+       return DataTables::of($data)->make(true);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+ 
+    public function view(){
+      return view('views.pengaduan.pengaduan');
+   }
+ 
     public function store(Request $request)
     {
-        //
+       $this->validate($request, [
+          'id_inventaris' => 'required',
+          'id_desc_permintaan' => 'required',
+        
+       ]);
+ 
+       $input = [
+          'id_inventaris' => $request->id_user,
+          'id_desc_permintaan' => $request->keluhan,
+      
+ 
+       ];
+ 
+       $data = BarangPakaiAduan::create($input);
+       return response()->json($data);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(BarangPakaiAduan $barangPakaiAduan)
+ 
+ 
+    public function getById($id)
     {
-        //
+       $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted =1 and id = $id");
+       return response()->json(['data' => $data]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(BarangPakaiAduan $barangPakaiAduan)
+ 
+    public function destroy($id)
     {
-        //
+       $data = BarangPakaiAduan::where('id', $id)->update([
+          'deleted' => 0
+       ]);
+       return response()->json($data);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, BarangPakaiAduan $barangPakaiAduan)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(BarangPakaiAduan $barangPakaiAduan)
-    {
-        //
+ 
+    public function update($id,Request $request){
+       $this->validate($request, [
+          'id_inventaris' => 'required',
+          'id_desc_permintaan' => 'required',
+         
+       ]);
+ 
+       $input = [
+          'id_inventaris' => $request->id_user,
+          'id_desc_permintaan' => $request->keluhan,
+         
+ 
+       ];
+ 
+       $data = BarangPakaiAduan::where('id',$id)->update($input);
+       return response()->json($data);
+ 
     }
 }

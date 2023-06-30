@@ -10,10 +10,16 @@ use Yajra\DataTables\DataTables;
 
 class AduanController extends Controller
 {
+   
+
    public function index()
    {
       $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted = 1");
       return DataTables::of($data)->make(true);
+   }
+
+   public function view(){
+      return view('views.pengaduan.pengaduan');
    }
 
    public function store(Request $request)

@@ -7,59 +7,94 @@ use Illuminate\Http\Request;
 
 class SperpatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+       $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted = 1");
+       return DataTables::of($data)->make(true);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+ 
+    public function view(){
+      return view('views.masterData.sperpat');
+   }
+ 
     public function store(Request $request)
     {
-        //
+       $this->validate($request, [
+          'id_user' => 'required',
+          'keluhan' => 'required',
+          'no_aduan' => 'required',
+          'no_hp' => 'required',
+          'lokasi' => 'required',
+          'email_atasan' => 'required',
+          'tgl_masuk' => 'required',
+          'tgl_keluar' => 'required',
+          'id_status' => 'required',
+          'nama_pengambil' => 'required',
+       ]);
+ 
+       $input = [
+          'id_user' => $request->id_user,
+          'keluhan' => $request->keluhan,
+          'no_aduan' => $request->no_aduan,
+          'no_hp' => $request->no_hp,
+          'lokasi' => $request->lokasi,
+          'email_atasan' => $request->email_atasan,
+          'tgl_masuk' => $request->tgl_masuk,
+          'tgl_keluar' => $request->tgl_keluar,
+          'id_status' => $request->id_status,
+          'nama_pengambil' => $request->nama_pengambil,
+ 
+       ];
+ 
+       $data = Aduan::create($input);
+       return response()->json($data);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Sperpat $sperpat)
+ 
+ 
+    public function getById($id)
     {
-        //
+       $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted =1 and id = $id");
+       return response()->json(['data' => $data]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Sperpat $sperpat)
+ 
+    public function destroy($id)
     {
-        //
+       $data = Aduan::where('id', $id)->update([
+          'deleted' => 0
+       ]);
+       return response()->json($data);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Sperpat $sperpat)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Sperpat $sperpat)
-    {
-        //
+ 
+    public function update($id,Request $request){
+       $this->validate($request, [
+          'id_user' => 'required',
+          'keluhan' => 'required',
+          'no_aduan' => 'required',
+          'no_hp' => 'required',
+          'lokasi' => 'required',
+          'email_atasan' => 'required',
+          'tgl_masuk' => 'required',
+          'tgl_keluar' => 'required',
+          'id_status' => 'required',
+          'nama_pengambil' => 'required',
+       ]);
+ 
+       $input = [
+          'id_user' => $request->id_user,
+          'keluhan' => $request->keluhan,
+          'no_aduan' => $request->no_aduan,
+          'no_hp' => $request->no_hp,
+          'lokasi' => $request->lokasi,
+          'email_atasan' => $request->email_atasan,
+          'tgl_masuk' => $request->tgl_masuk,
+          'tgl_keluar' => $request->tgl_keluar,
+          'id_status' => $request->id_status,
+          'nama_pengambil' => $request->nama_pengambil,
+ 
+       ];
+ 
+       $data = Aduan::where('id',$id)->update($input);
+       return response()->json($data);
+ 
     }
 }

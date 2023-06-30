@@ -6,19 +6,23 @@
 <meta name="author" content="Layanaan">
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
-<!-- VENDOR CSS -->
-<link href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-<!-- Vendor CSS Files -->
-<link href="{{ URL::asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ URL::asset('assets/vendors/feather/feather.css')}}">
+  <link rel="stylesheet" href="{{ URL::asset('assets/vendors/mdi/css/materialdesignicons.min.css')}}">
+  <link rel="stylesheet" href="{{ URL::asset('assets/vendors/ti-icons/css/themify-icons.css')}}">
+  <link rel="stylesheet" href="{{ URL::asset('assets/vendors/typicons/typicons.css')}}">
+  <link rel="stylesheet" href="{{ URL::asset('assets/vendors/simple-line-icons/css/simple-line-icons.css')}}">
+  <link rel="stylesheet" href="{{ URL::asset('assets/vendors/css/vendor.bundle.base.css')}}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{{ URL::asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
+  <link rel="stylesheet" href="{{ URL::asset('assets/vendors/ti-icons/css/themify-icons.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/js/select.dataTables.min.css')}}">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{ URL::asset('assets/css/vertical-layout-light/style.css')}}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.png')}}" />
 
 <!-- Template Main CSS File -->
-<link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
 @stack('css')
