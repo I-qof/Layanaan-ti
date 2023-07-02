@@ -1,4 +1,4 @@
-@extends('lucid')
+@extends('includes.main')
 
 @push('css')
     <link href="{{ URL::asset('assets/vendor/jquery-datatable/dataTables.bootstrap.css') }}" rel="stylesheet"

@@ -7,8 +7,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventarisController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\PermintaanController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SperpatController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\UserRoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+// halaman awal
 Route::get('/', function () {
     return view('welcome');
 });
@@ -44,6 +47,32 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/sperpat/view', [SperpatController::class, 'view']);
     Route::get('/inventaris/view', [InventarisController::class, 'view']);
     Route::get('/jenis-barang/view', [JenisBarangController::class, 'view']);
+    Route::get('/user-role/view', [UserRoleController::class, 'view']);
+    Route::get('/role/view', [RoleController::class, 'view']);
+    Route::get('/permission/view', [PermissionController::class, 'view']);
+
+    //user-management
+    Route::group(['prefix'=>'userroles'],function(){
+        Route::get('/', [UserRoleController::class,'index']);
+        Route::get('/{id}', [UserRoleController::class,'getById']);
+        Route::post('/', [UserRoleController::class,'store']);
+        Route::patch('/update/{id}', [UserRoleController::class,'update']);
+    });
+    Route::group(['prefix'=>'role'],function(){
+        Route::get('/', [RoleController::class,'get']);
+        Route::get('/getById/{id}', [RoleController::class,'getById']);
+        Route::post('/store', [RoleController::class,'store']);
+        Route::patch('/update/{id}', [RoleController::class,'update']);
+        Route::delete('/delete/{id}', [RoleController::class,'delete']);
+    });
+    Route::group(['prefix'=>'permissions'],function(){
+        Route::get('/', [PermissionController::class,'get']);
+        Route::get('/index', [PermissionController::class,'index']);
+        Route::get('/getById/{id}', [PermissionController::class,'getById']);
+        Route::post('/store', [PermissionController::class,'store']);
+        Route::delete('/delete/{id}', [PermissionController::class,'destroy']);
+        Route::get('/update/{id}', [PermissionController::class,'update']);
+    });
 
     // Route Aduan
     Route::group(['prefix' => 'aduan'], function () {
