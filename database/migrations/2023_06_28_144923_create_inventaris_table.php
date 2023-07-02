@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('no_inventaris');
             $table->text('deskripsi');
             $table->integer('status_pemakaian');
+            $table->integer('deleted');
             $table->timestamps();
         });
     }

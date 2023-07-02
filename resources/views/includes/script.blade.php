@@ -21,6 +21,9 @@
   <script src="{{ URL::asset('assets/js/jquery.cookie.j')}}s" type="text/javascript"></script>
   <script src="{{ URL::asset('assets/js/dashboard.js')}}"></script>
   <script src="{{ URL::asset('assets/js/Chart.roundedBarCharts.js')}}"></script>
+
+  <script src="{{ URL::asset('assets/vendors/sweetalert/sweetalert.min.js')}}"></script>
+  <script src="{{ URL::asset('assets/vendors/jquery-toast-plugin/jquery.toast.min.js')}}"></script>
   <!-- End custom js for this page-->
 
 

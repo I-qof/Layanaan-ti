@@ -1,54 +1,70 @@
 @extends('includes.main')
 @push('css')
-    
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
 @endpush
 
 @section('content')
-<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Data Status</h4>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table id="tabel-main" class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><button class="btn btn-outline-success" id="openModal">Tambah Data</button></th>
+                                    <th scope="col">Nama status</th>
+                                    <th scope="col">Warna</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-    <div class="pagetitle">
-      <h1>Status</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-          <li class="breadcrumb-item active">Master Data / Status</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <section class="section dashboard">
-      <div class="row">
-
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Table with hoverable rows</h5>
-
-            <!-- Table with hoverable rows -->
-            <table id="tabel-main" class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nama status</th>
-                  <th scope="col">Warna</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-               
-              </tbody>
-            </table>
-            <!-- End Table with hoverable rows -->
-
-          </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-     
-      </div>
-    </section>
-
-  </main><!-- End #main -->
+    {{-- modal --}}
+    <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-md-down" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAddLabel">Modal title</h5>
+                    <button class="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="formData" autocomplete="off">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Nama Status</label>
+                            <input type="text" id="id" hidden name="id">
+                            <input type="text" class="form-control" name="nama_status" id="nama_status" placeholder="Nama Status">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Warna</label>
+                            <input type="color" class="form-control" name="color" id="color">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="button" class="btn btn-light cancel" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')
+    <script src="{{ URL::asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
+    <script src="{{ URL::asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
+    {{-- <script src="{{ URL::asset('assets/js/data-table.js') }}"></script> --}}
     <script src="{{ URL::asset('js/status.js') }}" type="text/javascript"></script>
 @endpush

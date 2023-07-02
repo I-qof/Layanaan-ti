@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Permintaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class PermintaanController extends Controller
 {
     public function index()
    {
-      $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted = 1");
+      $data = DB::connection('mysql')->select("SELECT * FROM permintaan where deleted = 1");
       return DataTables::of($data)->make(true);
    }
 
@@ -46,7 +48,7 @@ class PermintaanController extends Controller
 
       ];
 
-      $data = Aduan::create($input);
+      $data = Permintaan::create($input);
       return response()->json($data);
    }
 
@@ -59,7 +61,7 @@ class PermintaanController extends Controller
 
    public function destroy($id)
    {
-      $data = Aduan::where('id', $id)->update([
+      $data = Permintaan::where('id', $id)->update([
          'deleted' => 0
       ]);
       return response()->json($data);
@@ -93,7 +95,7 @@ class PermintaanController extends Controller
 
       ];
 
-      $data = Aduan::where('id',$id)->update($input);
+      $data = Permintaan::where('id',$id)->update($input);
       return response()->json($data);
 
    }

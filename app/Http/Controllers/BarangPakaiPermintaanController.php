@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\BarangPakaiPermintaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class BarangPakaiPermintaanController extends Controller
 {

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Sperpat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class SperpatController extends Controller
 {
     public function index()
     {
-       $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted = 1");
+       $data = DB::connection('mysql')->select("SELECT * FROM sperpat where deleted = 1");
        return DataTables::of($data)->make(true);
     }
  
@@ -20,33 +22,26 @@ class SperpatController extends Controller
     public function store(Request $request)
     {
        $this->validate($request, [
-          'id_user' => 'required',
-          'keluhan' => 'required',
-          'no_aduan' => 'required',
-          'no_hp' => 'required',
-          'lokasi' => 'required',
-          'email_atasan' => 'required',
-          'tgl_masuk' => 'required',
-          'tgl_keluar' => 'required',
-          'id_status' => 'required',
-          'nama_pengambil' => 'required',
+          'nama_sperpat' => 'required',
+          'id_jenis' => 'required',
+          'no_inventaris' => 'required',
+          'id_user_pemakai' => 'required',
+          'deskripsi' => 'required',
+          'status_pemakaian' => 'required',
        ]);
  
        $input = [
-          'id_user' => $request->id_user,
-          'keluhan' => $request->keluhan,
-          'no_aduan' => $request->no_aduan,
-          'no_hp' => $request->no_hp,
-          'lokasi' => $request->lokasi,
-          'email_atasan' => $request->email_atasan,
-          'tgl_masuk' => $request->tgl_masuk,
-          'tgl_keluar' => $request->tgl_keluar,
-          'id_status' => $request->id_status,
-          'nama_pengambil' => $request->nama_pengambil,
+          'nama_sperpat' => $request->nama_sperpat,
+          'id_jenis' => $request->id_jenis,
+          'no_inventaris' => $request->no_inventaris,
+          'id_user_pemakai' => $request->id_user_pemakai,
+          'deskripsi' => $request->deskripsi,
+          'status_pemakaian' => $request->status_pemakaian,
+          
  
        ];
  
-       $data = Aduan::create($input);
+       $data = Sperpat::create($input);
        return response()->json($data);
     }
  
@@ -59,7 +54,7 @@ class SperpatController extends Controller
  
     public function destroy($id)
     {
-       $data = Aduan::where('id', $id)->update([
+       $data = Sperpat::where('id', $id)->update([
           'deleted' => 0
        ]);
        return response()->json($data);
@@ -67,33 +62,27 @@ class SperpatController extends Controller
  
     public function update($id,Request $request){
        $this->validate($request, [
-          'id_user' => 'required',
-          'keluhan' => 'required',
-          'no_aduan' => 'required',
-          'no_hp' => 'required',
-          'lokasi' => 'required',
-          'email_atasan' => 'required',
-          'tgl_masuk' => 'required',
-          'tgl_keluar' => 'required',
-          'id_status' => 'required',
-          'nama_pengambil' => 'required',
+          'nama_sperpat' => 'required',
+          'id_jenis' => 'required',
+          'no_inventaris' => 'required',
+          'id_user_pemakai' => 'required',
+          'deskripsi' => 'required',
+          'status_pemakaian' => 'required',
+      
        ]);
  
        $input = [
-          'id_user' => $request->id_user,
-          'keluhan' => $request->keluhan,
-          'no_aduan' => $request->no_aduan,
-          'no_hp' => $request->no_hp,
-          'lokasi' => $request->lokasi,
-          'email_atasan' => $request->email_atasan,
-          'tgl_masuk' => $request->tgl_masuk,
-          'tgl_keluar' => $request->tgl_keluar,
-          'id_status' => $request->id_status,
-          'nama_pengambil' => $request->nama_pengambil,
+          'nama_sperpat' => $request->nama_sperpat,
+          'id_jenis' => $request->id_jenis,
+          'no_inventaris' => $request->no_inventaris,
+          'id_user_pemakai' => $request->id_user_pemakai,
+          'deskripsi' => $request->deskripsi,
+          'status_pemakaian' => $request->status_pemakaian,
+          
  
        ];
  
-       $data = Aduan::where('id',$id)->update($input);
+       $data = Sperpat::where('id',$id)->update($input);
        return response()->json($data);
  
     }

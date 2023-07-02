@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\DescAduan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class DescAduanController extends Controller
 {
