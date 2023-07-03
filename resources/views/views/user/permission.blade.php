@@ -30,26 +30,36 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalAddSifat">
-        <div class="modal-dialog modal-st" role="document">
+     {{-- modal --}}
+     <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-md-down" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="title" id="defaultModalLabel">Tambah Data Permission</h5>
+                    <h5 class="modal-title" id="modalAddLabel">Modal title</h5>
+                    <button class="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <form id="formData" autocomplete="off">
+                    @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="control-label">Nama Permission</label>
+                            <label for="exampleInputUsername1">Nama Status</label>
+                            <input type="text" id="id" hidden name="id">
                             <input type="text" class="form-control" name="name" id="name">
                         </div>
+                        
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="button" class="btn btn-light cancel" data-dismiss="modal">Cancel</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    
 @endsection
 
 @push('scripts')

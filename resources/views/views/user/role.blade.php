@@ -31,31 +31,40 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalAddRole">
-        <div class="modal-dialog modal-lg" role="document">
+     {{-- modal --}}
+     <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-md-down" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="title" id="defaultModalLabel">Tambah Role</h5>
+                    <h5 class="modal-title" id="modalAddLabel">Modal title</h5>
+                    <button class="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <form id="formData" autocomplete="off">
+                    @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="control-label">Nama Role</label>
+                            <label for="exampleInputUsername1">Nama Role</label>
+                            <input type="text" id="id" hidden name="id">
                             <input type="text" class="form-control" name="name" id="name">
-
-
-                            <label class="control-label">Nama Permissions</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Permission</label>
                             <select class="form-control permission" name="permission[]" id="permission"
                                 style="width:100%"></select>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="button" class="btn btn-light cancel" data-dismiss="modal">Cancel</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+  
 @endsection
 
 @push('scripts')

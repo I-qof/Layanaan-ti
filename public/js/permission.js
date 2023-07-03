@@ -41,111 +41,131 @@ var table = $("#sample_1").DataTable({
 //     table.column($(this).attr("id").substring(7, 10)).search(this.value).draw();
 // });
 
-// let id;
+let id;
 
-// $(".btnAddPermission").on("click", function () {
-//     id = 0;
-//     $("#name").val("");
-//     $("#modalAddSifat").modal("show");
-// });
+$(".btnAddPermission").on("click", function () {
+    id = 0;
+    $("#name").val("");
+    $("#modalAdd").modal("show");
+});
 
-// $("#sample_1").on("click", ".editData", function () {
-//     data = table.rows($(this).closest("tr").index()).data()[0];
+$("#sample_1").on("click", ".editData", function () {
+    data = table.rows($(this).closest("tr").index()).data()[0];
 
-//     id = data.id;
-//     $("#name").val(data.name);
-//     $("#modalAddSifat").modal("show");
-// });
+    id = data.id;
+    $("#name").val(data.name);
+    $("#modalAdd").modal("show");
+});
 
-// $("#formData").on("submit", function (event) {
-//     event.preventDefault();
-//     if (id == 0) {
-//         $.ajax({
-//             type: "POST",
-//             url: APP_URL + "/permissions/store",
-//             data: $("#formData").serialize(),
-//             beforeSend: function () {
-//                 $("#modalAddSifat").block({
-//                     overlayCSS: { backgroundColor: "#005ba2" },
-//                 });
-//             },
-//             success: function (response) {
-//                 table.draw(false);
-//                 $("#modalAddSifat").unblock();
-//                 $("#modalAddSifat").modal("hide");
-//                 toastr["success"]("Data berhasil disimpan!", "Notifikasi");
-//             },
-//             error: function (data) {
-//                 $("#modalAddSifat").unblock();
+$("#formData").on("submit", function (event) {
+    event.preventDefault();
+    if (id == 0) {
+        $.ajax({
+            type: "POST",
+            url: APP_URL + "/permissions/store",
+            data: $("#formData").serialize(),
 
-//                 var msg = data.responseJSON;
-//                 var message = "";
+            success: function (response) {
+                table.draw(false);
+                $("#modalAdd").modal("hide");
+                $.toast({
+                    heading: "Info",
+                    text: "Data berhasil disimpan!",
+                    showHideTransition: "slide",
+                    icon: "info",
+                    loaderBg: "#46c35f",
+                    position: "top-right",
+                });
+            },
+            error: function (data) {
+                $.toast({
+                    heading: "Info",
+                    text: "Data gagal disimpan!",
+                    showHideTransition: "slide",
+                    icon: "info",
+                    loaderBg: "#46c35f",
+                    position: "top-right",
+                });
+                var msg = data.responseJSON;
+                var message = "";
 
-//                 $.each(msg, function (key, valueObj) {
-//                     valueObj.forEach((item, i) => {
-//                         message += ". " + item + "<br>";
-//                     });
-//                 });
+                $.each(msg, function (key, valueObj) {
+                    valueObj.forEach((item, i) => {
+                        message += ". " + item + "<br>";
+                    });
+                });
+            },
+        });
+    } else {
+        $.ajax({
+            type: "PUT",
+            url: APP_URL + "/permissions/update/" + id,
+            data: $("#formData").serialize(),
 
-//                 toastr["error"](message, "Error");
-//             },
-//         });
-//     } else {
-//         $.ajax({
-//             type: "PUT",
-//             url: APP_URL + "/permissions/update/" + id,
-//             data: $("#formData").serialize(),
-//             beforeSend: function () {
-//                 $("#modalAddSifat").block({
-//                     overlayCSS: { backgroundColor: "#005ba2" },
-//                 });
-//             },
-//             success: function (response) {
-//                 table.draw(false);
-//                 $("#modalAddSifat").unblock();
-//                 $("#modalAddSifat").modal("hide");
-//                 toastr["success"]("Data berhasil disimpan!", "Notifikasi");
-//             },
-//             error: function (data) {
-//                 $("#modalAddSifat").unblock();
+            success: function (response) {
+                table.draw(false);
+                $("#modalAdd").modal("hide");
+                $.toast({
+                    heading: "Info",
+                    text: "Data berhasil disimpan!",
+                    showHideTransition: "slide",
+                    icon: "info",
+                    loaderBg: "#46c35f",
+                    position: "top-right",
+                });
+            },
+            error: function (data) {
+                $.toast({
+                    heading: "Info",
+                    text: "Data gagal disimpan!",
+                    showHideTransition: "slide",
+                    icon: "info",
+                    loaderBg: "#46c35f",
+                    position: "top-right",
+                });
+                var msg = data.responseJSON;
+                var message = "";
 
-//                 var msg = data.responseJSON;
-//                 var message = "";
+                $.each(msg, function (key, valueObj) {
+                    valueObj.forEach((item, i) => {
+                        message += ". " + item + "<br>";
+                    });
+                });
+            },
+        });
+    }
+});
 
-//                 $.each(msg, function (key, valueObj) {
-//                     valueObj.forEach((item, i) => {
-//                         message += ". " + item + "<br>";
-//                     });
-//                 });
+$("#sample_1").on("click", ".hapusData", function () {
+    data = table.rows($(this).closest("tr").index()).data()[0];
+    bootbox.confirm("Hapus Data tersebut?", function (result) {
+        if (result) {
+            $.ajax({
+                type: "DELETE",
+                url: APP_URL + "/permissions/delete/" + data.id,
 
-//                 toastr["error"](message, "Error");
-//             },
-//         });
-//     }
-// });
-
-// $("#sample_1").on("click", ".hapusData", function () {
-//     data = table.rows($(this).closest("tr").index()).data()[0];
-//     bootbox.confirm("Hapus Data tersebut?", function (result) {
-//         if (result) {
-//             $.ajax({
-//                 type: "DELETE",
-//                 url: APP_URL + "/permissions/delete/" + data.id,
-//                 beforeSend: function () {
-//                     $.blockUI({
-//                         overlayCSS: { backgroundColor: "#005ba2" },
-//                     });
-//                 },
-//                 success: function (response) {
-//                     $.unblockUI();
-//                     toastr["success"]("Data berhasil dihapus!.", "Notifikasi");
-//                     table.draw();
-//                 },
-//                 error: function (data) {
-//                     $.unblockUI();
-//                     toastr["error"]("Masih terdapat Error!", "Error");
-//                 },
-//             });
-//         }
-//     });
-// });
+                success: function (response) {
+                    $.toast({
+                        heading: "Info",
+                        text: "Data berhasil dihapus!",
+                        showHideTransition: "slide",
+                        icon: "info",
+                        loaderBg: "#46c35f",
+                        position: "top-right",
+                    });
+                    table.draw();
+                },
+                error: function (data) {
+                    $.toast({
+                        heading: "Info",
+                        text: "Error!",
+                        showHideTransition: "slide",
+                        icon: "info",
+                        loaderBg: "#46c35f",
+                        position: "top-right",
+                    });
+                },
+            });
+        }
+    });
+});

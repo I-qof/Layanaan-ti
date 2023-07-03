@@ -75,123 +75,143 @@ var table = $("#tabel-main").DataTable({
 
 // let id;
 
-// $(".btnAddRole").on("click", function () {
-//     id = 0;
-//     $("#name").val("");
-//     $("#modalAddRole").modal("show");
-//     $("#permission").val("").trigger("change");
-// });
+$(".btnAddRole").on("click", function () {
+    id = 0;
+    $("#name").val("");
+    $("#modalAdd").modal("show");
+    $("#permission").val("").trigger("change");
+});
 
-// $("#tabel-main").on("click", ".editData", function () {
-//     data = table.row($(this).closest("tr")).data();
+$("#tabel-main").on("click", ".editData", function () {
+    data = table.row($(this).closest("tr")).data();
 
-//     id = data.id;
+    id = data.id;
 
-//     var permis = data.permissions;
-//     var permissions = [];
-//     for (var i = 0; i < permis.length; i++) {
-//         permissions.push(permis[i].name);
-//     }
-//     $("#permission").val(permissions).trigger("change");
-//     $("#permission").select2({
-//         placeholder: "Select Option",
-//         data: permissions,
-//     });
+    var permis = data.permissions;
+    var permissions = [];
+    for (var i = 0; i < permis.length; i++) {
+        permissions.push(permis[i].name);
+    }
+    $("#permission").val(permissions).trigger("change");
+    $("#permission").select2({
+        placeholder: "Select Option",
+        data: permissions,
+    });
 
-//     $("#name").val(data.name);
+    $("#name").val(data.name);
 
-//     $("#modalAddRole").modal("show");
-// });
+    $("#modalAddRole").modal("show");
+});
 
-// $("#formData").on("submit", function (event) {
-//     event.preventDefault();
-//     if (id == 0) {
-//         $.ajax({
-//             type: "POST",
-//             url: APP_URL + "/role/store",
-//             data: $("#formData").serialize(),
-//             beforeSend: function () {
-//                 $("#modalAddRole").block({
-//                     overlayCSS: { backgroundColor: "#005ba2" },
-//                 });
-//             },
-//             success: function (response) {
-//                 table.draw(false);
-//                 $("#modalAddRole").unblock();
-//                 $("#modalAddRole").modal("hide");
-//                 toastr["success"]("Data berhasil disimpan!", "Notifikasi");
-//             },
-//             error: function (data) {
-//                 $("#modalAddRole").unblock();
+$("#formData").on("submit", function (event) {
+    event.preventDefault();
+    if (id == 0) {
+        $.ajax({
+            type: "POST",
+            url: APP_URL + "/role/store",
+            data: $("#formData").serialize(),
+            beforeSend: function () {
+                $("#modalAddRole").block({
+                    overlayCSS: { backgroundColor: "#005ba2" },
+                });
+            },
+            success: function (response) {
+                table.draw(false);
 
-//                 var msg = data.responseJSON;
-//                 var message = "";
+                $("#modalAddRole").modal("hide");
+                toastr["success"]("Data berhasil disimpan!", "Notifikasi");
+            },
+            error: function (data) {
+                $.toast({
+                    heading: "Info",
+                    text: "Data berhasil disimpan!",
+                    showHideTransition: "slide",
+                    icon: "info",
+                    loaderBg: "#46c35f",
+                    position: "top-right",
+                });
+                var msg = data.responseJSON;
+                var message = "";
 
-//                 $.each(msg, function (key, valueObj) {
-//                     valueObj.forEach((item, i) => {
-//                         message += ". " + item + "<br>";
-//                     });
-//                 });
+                $.each(msg, function (key, valueObj) {
+                    valueObj.forEach((item, i) => {
+                        message += ". " + item + "<br>";
+                    });
+                });
+            },
+        });
+    } else {
+        $.ajax({
+            type: "PATCH",
+            url: APP_URL + "/role/update/" + id,
+            data: $("#formData").serialize(),
+            beforeSend: function () {
+                $("#modalAddRole").block({
+                    overlayCSS: { backgroundColor: "#005ba2" },
+                });
+            },
+            success: function (response) {
+                table.draw(false);
 
-//                 toastr["error"](message, "Error");
-//             },
-//         });
-//     } else {
-//         $.ajax({
-//             type: "PATCH",
-//             url: APP_URL + "/role/update/" + id,
-//             data: $("#formData").serialize(),
-//             beforeSend: function () {
-//                 $("#modalAddRole").block({
-//                     overlayCSS: { backgroundColor: "#005ba2" },
-//                 });
-//             },
-//             success: function (response) {
-//                 table.draw(false);
-//                 $("#modalAddRole").unblock();
-//                 $("#modalAddRole").modal("hide");
-//                 toastr["success"]("Data berhasil disimpan!", "Notifikasi");
-//             },
-//             error: function (data) {
-//                 $("#modalAddRole").unblock();
+                $("#modalAddRole").modal("hide");
+                toastr["success"]("Data berhasil disimpan!", "Notifikasi");
+            },
+            error: function (data) {
+                $.toast({
+                    heading: "Info",
+                    text: "Data berhasil disimpan!",
+                    showHideTransition: "slide",
+                    icon: "info",
+                    loaderBg: "#46c35f",
+                    position: "top-right",
+                });
+                var msg = data.responseJSON;
+                var message = "";
 
-//                 var msg = data.responseJSON;
-//                 var message = "";
+                $.each(msg, function (key, valueObj) {
+                    valueObj.forEach((item, i) => {
+                        message += ". " + item + "<br>";
+                    });
+                });
+            },
+        });
+    }
+});
 
-//                 $.each(msg, function (key, valueObj) {
-//                     valueObj.forEach((item, i) => {
-//                         message += ". " + item + "<br>";
-//                     });
-//                 });
-
-//                 toastr["error"](message, "Error");
-//             },
-//         });
-//     }
-// });
-
-// $("#tabel-main").on("click", ".hapusData", function () {
-//     data = table.rows($(this).closest("tr").index()).data()[0];
-//     bootbox.confirm("Hapus Data tersebut?", function (result) {
-//         if (result) {
-//             $.ajax({
-//                 type: "DELETE",
-//                 url: APP_URL + "/role/delete/" + data.id,
-//                 beforeSend: function () {
-//                     $.blockUI({
-//                         overlayCSS: { backgroundColor: "#005ba2" },
-//                     });
-//                 },
-//                 success: function (response) {
-//                     $.unblockUI();
-//                     toastr["success"]("Data berhasil dihapus!.", "Notifikasi");
-//                     table.draw();
-//                 },
-//                 error: function (data) {
-//                     $.unblockUI();
-//                     toastr["error"]("Masih terdapat Error!", "Error");
-//                 },
-//             });
-//         }
-//     });
-// });
+$("#tabel-main").on("click", ".hapusData", function () {
+    data = table.rows($(this).closest("tr").index()).data()[0];
+    bootbox.confirm("Hapus Data tersebut?", function (result) {
+        if (result) {
+            $.ajax({
+                type: "DELETE",
+                url: APP_URL + "/role/delete/" + data.id,
+                beforeSend: function () {
+                    $.blockUI({
+                        overlayCSS: { backgroundColor: "#005ba2" },
+                    });
+                },
+                success: function (response) {
+                    $.toast({
+                        heading: "Info",
+                        text: "Data berhasil dihapus!",
+                        showHideTransition: "slide",
+                        icon: "info",
+                        loaderBg: "#46c35f",
+                        position: "top-right",
+                    });
+                    table.draw();
+                },
+                error: function (data) {
+                    $.toast({
+                        heading: "Info",
+                        text: "Masih terdapat error!",
+                        showHideTransition: "slide",
+                        icon: "info",
+                        loaderBg: "#46c35f",
+                        position: "top-right",
+                    });
+                },
+            });
+        }
+    });
+});
