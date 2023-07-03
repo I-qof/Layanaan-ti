@@ -3,6 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="description" content="Layannan Pengaduan">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="author" content="Layanaan">
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -19,6 +20,9 @@
 <link rel="stylesheet" href="{{ URL::asset('assets/vendors/ti-icons/css/themify-icons.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/js/select.dataTables.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('assets/vendors/jquery-toast-plugin/jquery.toast.min.css')}}">
+
+<link rel="stylesheet" href="{{ URL::asset('assets/vendors/select2/select2.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
 
 
 <!-- End plugin css for this page -->

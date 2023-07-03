@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', [UserRoleController::class,'index']);
         Route::get('/{id}', [UserRoleController::class,'getById']);
         Route::post('/', [UserRoleController::class,'store']);
-        Route::patch('/update/{id}', [UserRoleController::class,'update']);
+        Route::patch('/update', [UserRoleController::class,'update']);
     });
     Route::group(['prefix'=>'role'],function(){
         Route::get('/', [RoleController::class,'get']);

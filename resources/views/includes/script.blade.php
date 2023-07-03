@@ -7,7 +7,6 @@
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="{{ URL::asset('assets/vendors/chart.js/Chart.min.js')}}"></script>
-  <script src="{{ URL::asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{ URL::asset('assets/vendors/progressbar.js/progressbar.min.js')}}"></script>
   <!-- End plugin js for this page -->
   <!-- inject:js -->
@@ -24,6 +23,8 @@
 
   <script src="{{ URL::asset('assets/vendors/sweetalert/sweetalert.min.js')}}"></script>
   <script src="{{ URL::asset('assets/vendors/jquery-toast-plugin/jquery.toast.min.js')}}"></script>
+  <script src="{{ URL::asset('assets/vendors/select2/select2.min.js') }}"></script>
+  <script src="{{ URL::asset('js/app.js') }}"></script>
   <!-- End custom js for this page-->
 
 

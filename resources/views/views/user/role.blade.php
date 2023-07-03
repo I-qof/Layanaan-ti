@@ -2,6 +2,8 @@
 
 @push('css')
     <link rel="stylesheet" href="{{ URL::asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
 @endpush
 
 @section('content')
@@ -17,7 +19,7 @@
                                     <th scope="col"><button class="btn btn-outline-success" id="openModal">Tambah
                                             Data</button></th>
                                     <th class="text-center" style="width:35%">Nama Role</th>
-                                    <th class="text-center" style="width:25%">Permission</th>
+                                    <th  style="width:25%">Permission</th>
                                     <th class="text-center" style="width:15%">Action</th>
                                 </tr>
                             </thead>
@@ -31,8 +33,8 @@
         </div>
     </div>
 
-     {{-- modal --}}
-     <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel" aria-hidden="true">
+    {{-- modal --}}
+    <div class="modal fade" id="modalAdd"  role="dialog" aria-labelledby="modalAddLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-md-down" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -42,7 +44,7 @@
                     </button>
                 </div>
                 <form id="formData" autocomplete="off">
-                    @csrf
+                    @csrf 
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputUsername1">Nama Role</label>
@@ -51,8 +53,9 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Permission</label>
-                            <select class="form-control permission" name="permission[]" id="permission"
+                            <select class="js-example-basic-multiple w-100 permission" name="permission[]" id="permission" multiple="multiple"
                                 style="width:100%"></select>
+                                
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -63,13 +66,12 @@
             </div>
         </div>
     </div>
-
-  
 @endsection
 
 @push('scripts')
     <script src="{{ URL::asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
     <script src="{{ URL::asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
-    {{-- <script src="{{ URL::asset('assets/js/data-table.js') }}"></script> --}}
+    <script src="{{ URL::asset('assets/vendors/select2/select2.min.js') }}"></script>
+
     <script src="{{ URL::asset('js/role.js') }}" type="text/javascript"></script>
 @endpush

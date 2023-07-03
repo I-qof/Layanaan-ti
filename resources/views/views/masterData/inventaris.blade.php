@@ -44,13 +44,21 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleInputUsername1">Nama Status</label>
+                            <label for="exampleInputUsername1">Nama Inventaris</label>
                             <input type="text" id="id" hidden name="id">
-                            <input type="text" class="form-control" name="nama_status" id="nama_status" placeholder="Nama Status">
+                            <input type="text" class="form-control" name="nama_inventaris" id="nama_inventaris" placeholder="Nama Inventaris">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Warna</label>
-                            <input type="color" class="form-control" name="color" id="color">
+                            <label for="exampleInputEmail1">Jenis Barang</label>
+                            <select name="id_jenis" id="id_jenis"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Inventaris">No.Inventaris/ SN</label>
+                            <input type="color" class="form-control" name="no_inventaris" id="no_inventaris">
+                        </div>
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <textarea class="form-control" name="deskripsi" id="deskripsi"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

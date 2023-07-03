@@ -1,4 +1,4 @@
-var table = $("#sample_1").DataTable({
+var table = $("#tabel-main").DataTable({
     bLengthChange: false,
     ordering: false,
     processing: true,
@@ -9,6 +9,13 @@ var table = $("#sample_1").DataTable({
         method: "GET",
     },
     columns: [
+        {
+            data: "id",
+            render: function (data, type, row, meta) {
+                return meta.row + meta.settings._iDisplayStart + 1;
+            },
+            className: "text-center",
+        },
         {
             data: "name",
             className: "text-center",
@@ -26,16 +33,16 @@ var table = $("#sample_1").DataTable({
             className: "text-center",
         },
     ],
-    initComplite: function () {
-        let menus = JSON.parse(localStorage.getItem("menus"));
+    // initComplite: function () {
+    //     let menus = JSON.parse(localStorage.getItem("menus"));
 
-        menus.forEach((elem) => {
-            $("." + elem.name).show();
-        });
-    },
+    //     menus.forEach((elem) => {
+    //         $("." + elem.name).show();
+    //     });
+    // },
 });
 
-// $("#sample_1_filter").hide();
+// $("#tabel-main_filter").hide();
 
 // $(table.table().container()).on("keyup", "thead input", function (index) {
 //     table.column($(this).attr("id").substring(7, 10)).search(this.value).draw();
@@ -43,13 +50,20 @@ var table = $("#sample_1").DataTable({
 
 let id;
 
-$(".btnAddPermission").on("click", function () {
+$(".cancel").on("click", function () {
+    $("#modalAdd").modal("hide");
+});
+$(".close").on("click", function () {
+    $("#modalAdd").modal("hide");
+});
+
+$("#openModal").on("click", function () {
     id = 0;
     $("#name").val("");
     $("#modalAdd").modal("show");
 });
 
-$("#sample_1").on("click", ".editData", function () {
+$("#tabel-main").on("click", ".editData", function () {
     data = table.rows($(this).closest("tr").index()).data()[0];
 
     id = data.id;
@@ -136,9 +150,33 @@ $("#formData").on("submit", function (event) {
     }
 });
 
-$("#sample_1").on("click", ".hapusData", function () {
+$("#tabel-main").on("click", ".hapusData", function () {
     data = table.rows($(this).closest("tr").index()).data()[0];
-    bootbox.confirm("Hapus Data tersebut?", function (result) {
+    swal({
+        title: 'Hapus Data?',
+        text: "Data yang dihapus tidak dapat dikembalikan!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3f51b5',
+        cancelButtonColor: '#ff4081',
+        confirmButtonText: 'Great ',
+        buttons: {
+          cancel: {
+            text: "Cancel",
+            value: null,
+            visible: true,
+            className: "btn btn-danger",
+            closeModal: true,
+          },
+          confirm: {
+            text: "OK",
+            value: true,
+            visible: true,
+            className: "btn btn-primary",
+            closeModal: true
+          }
+        }
+      }).then(function(result){
         if (result) {
             $.ajax({
                 type: "DELETE",

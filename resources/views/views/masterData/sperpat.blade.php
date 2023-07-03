@@ -35,7 +35,7 @@
         <div class="modal-dialog modal-fullscreen-md-down" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalAddLabel">Modal title</h5>
+                    <h5 class="modal-title" id="modalAddLabel">Tambah Data</h5>
                     <button class="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -44,13 +44,21 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleInputUsername1">Nama Status</label>
+                            <label for="exampleInputUsername1">Nama Sperpat</label>
                             <input type="text" id="id" hidden name="id">
-                            <input type="text" class="form-control" name="nama_status" id="nama_status" placeholder="Nama Status">
+                            <input type="text" class="form-control" name="nama_sperpat" id="nama_sperpat" placeholder="Nama Sperpat">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Warna</label>
-                            <input type="color" class="form-control" name="color" id="color">
+                            <label for="exampleInputEmail1">Jenis Barang</label>
+                            <select name="id_jenis" id="id_jenis"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Inventaris">No.Inventaris/ SN</label>
+                            <input type="color" class="form-control" name="no_inventaris" id="no_inventaris">
+                        </div>
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <textarea class="form-control" name="deskripsi" id="deskripsi"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

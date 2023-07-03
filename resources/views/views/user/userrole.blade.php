@@ -1,6 +1,8 @@
 @extends('includes.main')
 @push('css')
     <link rel="stylesheet" href="{{ URL::asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
 @endpush
 
 @section('content')
@@ -45,14 +47,23 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleInputUsername1">Nama Status</label>
-                            <input type="text" id="id" hidden name="id">
-                            <input type="text" class="form-control" name="nama_status" id="nama_status"
-                                placeholder="Nama Status">
+                            <label class="control-label">Username</label>
+                            <input type="text" class="form-control" name="id" id="id" hidden>
+                            <input type="text" class="form-control" name="name" id="name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Warna</label>
-                            <input type="color" class="form-control" name="color" id="color">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <label class="control-label">Email</label><br>
+                                    <input type="text" class="form-control" name="email" id="email">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="control-label">Role</label><br>
+                                    <select class="form-control" id="roles" style="width:100%" name="roles">
+
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -68,6 +79,7 @@
 @push('scripts')
     <script src="{{ URL::asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
     <script src="{{ URL::asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
+    <script src="{{ URL::asset('assets/vendors/select2/select2.min.js') }}"></script>
     {{-- <script src="{{ URL::asset('assets/js/data-table.js') }}"></script> --}}
     <script src="{{ URL::asset('js/userrole.js') }}" type="text/javascript"></script>
 @endpush

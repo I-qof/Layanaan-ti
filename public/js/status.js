@@ -162,7 +162,6 @@ $("#tabel-main").on("click", ".hapusData", function () {
         }
       }).then(function(result){
         if(result){
-            // alert("hy")
             $.ajax({
                 type : 'GET',
                 url  : APP_URL + '/status/delete/' + data.id,

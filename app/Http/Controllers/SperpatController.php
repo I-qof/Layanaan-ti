@@ -25,9 +25,9 @@ class SperpatController extends Controller
           'nama_sperpat' => 'required',
           'id_jenis' => 'required',
           'no_inventaris' => 'required',
-          'id_user_pemakai' => 'required',
+         //  'id_user_pemakai' => 'required',
           'deskripsi' => 'required',
-          'status_pemakaian' => 'required',
+         //  'status_pemakaian' => 'required',
        ]);
  
        $input = [
@@ -65,9 +65,9 @@ class SperpatController extends Controller
           'nama_sperpat' => 'required',
           'id_jenis' => 'required',
           'no_inventaris' => 'required',
-          'id_user_pemakai' => 'required',
+         //  'id_user_pemakai' => 'required',
           'deskripsi' => 'required',
-          'status_pemakaian' => 'required',
+         //  'status_pemakaian' => 'required',
       
        ]);
  

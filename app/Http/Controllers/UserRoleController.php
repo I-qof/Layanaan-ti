@@ -22,7 +22,7 @@ class UserRoleController extends Controller
     }
     public function store(Request $request)
     {
-        $user = User::where('id', $request->id);
+        $user = User::where('email', $request->email);
         $user->assignRole($request->input('roles'));
         return response()->json(['success' => 'Data Berhasil Ditambah']);
     }
@@ -35,11 +35,11 @@ class UserRoleController extends Controller
         return response()->json(['userrole' => $userRole]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $user = User::find($id);
+        $user = User::find($request->id);
 
-        DB::table('model_has_roles')->where('model_id', $id)->delete();
+        DB::table('model_has_roles')->where('model_id', $request->id)->delete();
 
         $user->assignRole($request->input('roles'));
 

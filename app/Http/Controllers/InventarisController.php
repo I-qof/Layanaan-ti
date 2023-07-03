@@ -24,10 +24,10 @@ class InventarisController extends Controller
       $this->validate($request, [
          'nama_inventaris' => 'required',
          'id_jenis' => 'required',
-         'id_user_pemakai' => 'required',
+         // 'id_user_pemakai' => 'required',
          'no_inventaris' => 'required',
          'deskripsi' => 'required',
-         'status_pemakaian' => 'required',
+         // 'status_pemakaian' => 'required',
          
       ]);
 
@@ -64,10 +64,10 @@ class InventarisController extends Controller
       $this->validate($request, [
          'nama_inventaris' => 'required',
          'id_jenis' => 'required',
-         'id_user_pemakai' => 'required',
+         // 'id_user_pemakai' => 'required',
          'no_inventaris' => 'required',
          'deskripsi' => 'required',
-         'status_pemakaian' => 'required',
+         // 'status_pemakaian' => 'required',
          
       ]);
 

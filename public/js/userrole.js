@@ -1,11 +1,14 @@
-// $.getJSON(APP_URL + "/user/getrole", function(data) {
-//     data.forEach((item, i) => {
-//         $('#selLevel').append($('<option>', {
-//           value: item.id,
-//           text: item.role
-//         }));
-//     });
-// });
+// $("#roles").select2();
+$.getJSON(APP_URL + "/role", function (data) {
+    data.data.forEach((item, i) => {
+        $("#roles").append(
+            $("<option>", {
+                value: item.name,
+                text: item.name,
+            })
+        );
+    });
+});
 
 var table = $("#tabel-main").DataTable({
     bLengthChange: false,
@@ -58,99 +61,131 @@ var table = $("#tabel-main").DataTable({
     ],
 });
 
-// $('#tabel-main_filter').hide();
+$(".cancel").on("click", function () {
+    $("#modalAdd").modal("hide");
+});
+$(".close").on("click", function () {
+    $("#modalAdd").modal("hide");
+});
 
-// $(table.table().container()).on('keyup', 'thead input', function(index){
+$("#openModal").on("click", function () {
+    $("#name").val("");
+    $("#email").val("");
+    $("#selLevel").val("1").trigger("change");
+    $("#modalAdd").modal("show");
+});
 
-//    table
-//        .column($(this).attr('id').substring(7,10))
-//        .search(this.value)
-//        .draw();
-// });
-
-// $('.btnAddUser').on('click', function(){
-
-//     var $newOption = $("<option selected='selected'></option>").val('').text('');
-//     $("#selKary").append($newOption).trigger('change');
-
-//     $('#email').val('');
-//     $('#selLevel').val('1').trigger('change');
-//     $('#modalAddUser').modal('show');
-// });
-
-$('#formData').on('submit', function(event){
-
+$("#formData").on("submit", function (event) {
     event.preventDefault();
     $.ajax({
-        type : 'POST',
-        url  : APP_URL + '/user',
-        data : $('#formData').serialize(),
-        beforeSend: function() {
-            $('#modalAddUser').block({
-                overlayCSS: { backgroundColor: '#005ba2' }
+        type: "PATCH",
+        url: APP_URL + "/userroles/update",
+        data: $("#formData").serialize(),
+
+        success: function (response) {
+            table.draw(false);
+
+            $("#modalAdd").modal("hide");
+            $.toast({
+                heading: "Info",
+                text: "Data berhasil diubah!",
+                showHideTransition: "slide",
+                icon: "info",
+                loaderBg: "#46c35f",
+                position: "top-right",
             });
         },
-        success :  function(response){
-            table.draw(false);
-            $('#modalAddUser').unblock();
-            $('#modalAddUser').modal('hide');
-            toastr["success"]("Data berhasil disimpan!", "Notifikasi");
-        },
-        error: function(data){
-            $('#modalAddUser').unblock();
+        error: function (data) {
 
-            var msg     = data.responseJSON;
+            $.toast({
+                heading: "Info",
+                text: "Error!",
+                showHideTransition: "slide",
+                icon: "info",
+                loaderBg: "#46c35f",
+                position: "top-right",
+            });
+            var msg = data.responseJSON;
             var message = "";
 
-            $.each(msg, function(key, valueObj){
-
+            $.each(msg, function (key, valueObj) {
                 valueObj.forEach((item, i) => {
-                    message += ". " + item + "<br>"
+                    message += ". " + item + "<br>";
                 });
             });
 
             toastr["error"](message, "Error");
-        }
+        },
     });
 });
 
-$('#tabel-main').on('click', '.editData', function(){
+$("#tabel-main").on("click", ".editData", function () {
+    data = table.rows($(this).closest("tr").index()).data()[0];
 
-    data = table.rows($(this).closest('tr').index()).data()[0];
+    $("#id").val(data.id);
+    $("#name").val(data.name);
+    $("#email").val(data.email);
 
-    var $newOption = $("<option selected='selected'></option>").val(data.username + " | " + data.name).text(data.username + " | " + data.name);
-    $("#selKary").append($newOption).trigger('change');
-
-    $('#email').val(data.email);
-    $('#selLevel').val(data.level).trigger('change');
-
-    $('#modalAddUser').modal('show');
+    $("#modalAdd").modal("show");
 });
 
-$('#tabel-main').on('click', '.hapusData', function(){
 
-  data = table.rows($(this).closest('tr').index()).data()[0];
-  bootbox.confirm("Hapus Data tersebut?", function(result) {
-    if(result){
-      $.ajax({
-          type : 'DELETE',
-          url  : APP_URL + '/user',
-          data : "id=" + data.id,
-          beforeSend: function() {
-              $.blockUI({
-                overlayCSS: { backgroundColor: '#005ba2' }
-              });
+
+$("#tabel-main").on("click", ".hapusData", function () {
+    data = table.rows($(this).closest("tr").index()).data()[0];
+    swal({
+        title: 'Hapus Data?',
+        text: "Data yang dihapus tidak dapat dikembalikan!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3f51b5',
+        cancelButtonColor: '#ff4081',
+        confirmButtonText: 'Great ',
+        buttons: {
+          cancel: {
+            text: "Cancel",
+            value: null,
+            visible: true,
+            className: "btn btn-danger",
+            closeModal: true,
           },
-          success :  function(response){
-              $.unblockUI();
-              toastr["success"]("Data berhasil dihapus!.", "Notifikasi");
-              table.draw();
-          },
-          error: function(data){
-              $.unblockUI();
-              toastr["error"]("Masih terdapat Error!", "Error");
+          confirm: {
+            text: "OK",
+            value: true,
+            visible: true,
+            className: "btn btn-primary",
+            closeModal: true
           }
-      });
-    }
-  });
+        }
+      }).then(function(result){
+        if (result) {
+            $.ajax({
+                type: "DELETE",
+                url: APP_URL + "/user",
+                data: "id=" + data.id,
+               
+                success: function (response) {
+                    $.toast({
+                        heading: "Info",
+                        text: "Data berhasil dihapus!",
+                        showHideTransition: "slide",
+                        icon: "info",
+                        loaderBg: "#46c35f",
+                        position: "top-right",
+                    });
+                    table.draw();
+                },
+                error: function (data) {
+                    $.toast({
+                        heading: "Info",
+                        text: "Masih terdapat error!",
+                        showHideTransition: "slide",
+                        icon: "info",
+                        loaderBg: "#46c35f",
+                        position: "top-right",
+                    });
+                },
+            });
+        }
+    });
 });
