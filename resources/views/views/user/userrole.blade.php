@@ -13,7 +13,8 @@
                         <table id="tabel-main" class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col"><button class="btn btn-outline-success" id="openModal">Tambah Data</button></th>
+                                    <th scope="col"><button class="btn btn-outline-success" id="openModal">Tambah
+                                            Data</button></th>
                                     <th class="text-center" style="width:35%">Name</th>
                                     <th class="text-center" style="width:25%">Email</th>
                                     <th class="text-center" style="width:15%">Level</th>
@@ -46,7 +47,8 @@
                         <div class="form-group">
                             <label for="exampleInputUsername1">Nama Status</label>
                             <input type="text" id="id" hidden name="id">
-                            <input type="text" class="form-control" name="nama_status" id="nama_status" placeholder="Nama Status">
+                            <input type="text" class="form-control" name="nama_status" id="nama_status"
+                                placeholder="Nama Status">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Warna</label>
