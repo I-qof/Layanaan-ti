@@ -25,7 +25,7 @@ class AduanController extends Controller
    public function store(Request $request)
    {
       $this->validate($request, [
-         'id_user' => 'required',
+         // 'id_user' => 'required',
          'keluhan' => 'required',
          'no_aduan' => 'required',
          'no_hp' => 'required',
@@ -38,7 +38,7 @@ class AduanController extends Controller
       ]);
 
       $input = [
-         'id_user' => $request->id_user,
+         // 'id_user' => $request->id_user,
          'keluhan' => $request->keluhan,
          'no_aduan' => $request->no_aduan,
          'no_hp' => $request->no_hp,
@@ -72,7 +72,7 @@ class AduanController extends Controller
 
    public function update($id,Request $request){
       $this->validate($request, [
-         'id_user' => 'required',
+         // 'id_user' => 'required',
          'keluhan' => 'required',
          'no_aduan' => 'required',
          'no_hp' => 'required',
@@ -85,7 +85,7 @@ class AduanController extends Controller
       ]);
 
       $input = [
-         'id_user' => $request->id_user,
+         // 'id_user' => $request->id_user,
          'keluhan' => $request->keluhan,
          'no_aduan' => $request->no_aduan,
          'no_hp' => $request->no_hp,

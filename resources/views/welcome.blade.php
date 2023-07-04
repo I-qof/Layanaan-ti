@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Desktop App - SB UI Kit Pro</title>
+        <title>Layanaan TI - PT.Pupuk Sriwijaya Palembang</title>
         <link href="{{ URL::asset('assetsProfil/css/styles.css') }}" rel="stylesheet" />
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
@@ -25,6 +25,8 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ms-auto me-lg-5">
                                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="index.html">Aduan</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="index.html">Permintaan</a></li>
                                     {{-- <li class="nav-item dropdown dropdown-xl no-caret">
                                         <a class="nav-link dropdown-toggle" id="navbarDropdownDemos" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Landings

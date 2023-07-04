@@ -37,6 +37,10 @@ Auth::routes();
 Route::get('/dashboard', function () {
     return view('views.dashboard');
 });
+Route::post('/aduan/store', [AduanController::class, 'store']);
+Route::post('/store', [PermintaanController::class, 'store']);
+
+
 
 Route::group(['middleware' => 'auth'], function () {
     // halaman view
@@ -78,7 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'aduan'], function () {
         Route::get('/', [AduanController::class, 'index']);
         Route::get('/getById/{id}', [AduanController::class, 'getById']);
-        Route::post('/store', [AduanController::class, 'store']);
+        // Route::post('/store', [AduanController::class, 'store']);
         Route::post('/update/{id}', [AduanController::class, 'update']);
         Route::get('/delete/{id}', [AduanController::class, 'destroy']);
     });
@@ -86,7 +90,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'permintaan'], function () {
         Route::get('/', [PermintaanController::class, 'index']);
         Route::get('/getById/{id}', [PermintaanController::class, 'getById']);
-        Route::post('/store', [PermintaanController::class, 'store']);
+        // Route::post('/store', [PermintaanController::class, 'store']);
         Route::post('/update/{id}', [PermintaanController::class, 'update']);
         Route::get('/delete/{id}', [PermintaanController::class, 'destroy']);
     });
