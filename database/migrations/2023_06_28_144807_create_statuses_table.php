@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_status');
             $table->string('color');
-            $table->integer('deleted');
+            $table->integer('deleted')->default(1);
             $table->timestamps();
         });
     }

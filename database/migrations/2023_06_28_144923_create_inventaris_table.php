@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,12 +13,18 @@ return new class extends Migration
         Schema::create('inventaris', function (Blueprint $table) {
             $table->id();
             $table->string('nama_inventaris');
-            $table->integer('id_jenis');
-            $table->integer('id_user_pemakai');
+            $table
+                ->foreignId('id_jenis')
+                ->constrained('jenis_barang')
+                ->onDelete('cascade');
+            $table
+                ->foreignId('id_user_pemakai')
+                ->constrained('users')
+                ->onDelete('cascade');
             $table->string('no_inventaris');
             $table->text('deskripsi');
             $table->integer('status_pemakaian');
-            $table->integer('deleted');
+            $table->integer('deleted')->default(1);
             $table->timestamps();
         });
     }
