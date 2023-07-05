@@ -12,6 +12,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SperpatController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\UserRoleController;
+use App\Models\Aduan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,8 @@ Route::get('/dashboard', function () {
 });
 Route::post('/aduan/store', [AduanController::class, 'store']);
 Route::post('/store', [PermintaanController::class, 'store']);
+Route::get('/view/aduan', [AduanController::class, 'viewAduan']);
+Route::get('/view/permintaan', [PermintaanController::class, 'viewPermintaan']);
 
 
 

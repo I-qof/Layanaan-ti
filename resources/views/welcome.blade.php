@@ -24,8 +24,8 @@
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ms-auto me-lg-5">
-                                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="index.html">Aduan</a></li>
+                                    {{-- <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li> --}}
+                                    <li class="nav-item"><a class="nav-link" href="{{ url('') }}">Aduan</a></li>
                                     <li class="nav-item"><a class="nav-link" href="index.html">Permintaan</a></li>
                                     {{-- <li class="nav-item dropdown dropdown-xl no-caret">
                                         <a class="nav-link dropdown-toggle" id="navbarDropdownDemos" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
