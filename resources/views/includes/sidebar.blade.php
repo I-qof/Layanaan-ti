@@ -19,10 +19,10 @@
                </a>
                <div class="collapse" id="ui-basic">
                    <ul class="nav flex-column sub-menu">
-                       <li class="nav-item {{ Request::is(['aduan/view']) ? 'active' : '' }}">
+                       <li class="nav-item {{ Request::is(['aduan/viewsss']) ? 'active' : '' }}">
                            <a class="nav-link"
                                href="
-                               {{ url('/aduan/view/') }}
+                               {{ url('/aduan/report/') }}
                                ">Request</a>
                        </li>
                        <li class="nav-item {{ Request::is(['aduan/laporan']) ? 'active' : '' }}"> <a class="nav-link"
