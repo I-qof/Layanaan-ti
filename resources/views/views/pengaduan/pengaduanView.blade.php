@@ -24,11 +24,10 @@
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ms-auto me-lg-5">
-                                    <li class="nav-item"><a class="nav-link active" href="{{ url('/') }}">Home</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{ url('/view/aduan') }}">Aduan</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{ url('/view/permintaan') }}">Permintaan</a></li>
-                                    
-                                    
+                                    <li class="nav-item"><a class="nav-link " href="{{ url('/') }}">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="{{ url('/view/aduan') }}">Aduan</a></li>
+                                    <li class="nav-item"><a class="nav-link " href="{{ url('/view/permintaan') }}l">Permintaan</a></li>
+                                  
                                 </ul>
                                 <a class="btn fw-500 ms-lg-4 btn-primary" href="{{ url('/login') }}">
                                     Login
@@ -43,28 +42,29 @@
                             <div class="container px-5">
                                 <div class="row gx-5 justify-content-center">
                                     <div class="col-xl-8 col-lg-10 text-center mb-4" data-aos="fade">
-                                        <h1 class="page-header-ui-title">Introducing a full suite of premium products</h1>
-                                        <p class="page-header-ui-text">Build a marketing site for your desktop app with this easy to use layout included with SB UI Kit Pro</p>
+                                        <h1 class="page-header-ui-title">Selamat Datang Dilayanaan Pengaduan</h1>
+                                        <p class="page-header-ui-text">Silahkan Lakukan tracking pengaduan anda</p>
                                         <a class="btn btn-primary fw-500 me-2" href="#!">Get Started</a>
-                                        <a class="btn btn-link fw-500" href="#!">Learn More</a>
+                                        {{-- <a class="btn btn-link fw-500" href="#!">Learn More</a> --}}
+                                        <input type="text" class="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="svg-border-rounded text-light">
                             <!-- Rounded SVG Border-->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
+                            {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg> --}}
                         </div>
                     </header>
-                    <section class="bg-light pb-10 pt-1">
+                    {{-- <section class="bg-light pb-10 pt-1">
                         <div class="container px-5">
                             <div class="device-laptop text-gray-200 mt-n10" data-aos="fade-up">
                                 <svg class="device-container" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="83.911 298.53 426.962 243.838"><path d="M474.843 516.208V309.886c0-6.418-4.938-11.355-11.354-11.355H131.791c-6.417 0-11.354 4.938-11.354 11.355v206.816H83.911v13.326c4.938 7.896 31.098 12.34 40.969 12.34h345.024c10.366 0 36.526-4.936 40.969-12.34v-13.326h-36.03v-.494zM134.26 313.341h326.762v203.361H134.26V313.341z"></path></svg>
                                 <img class="device-screenshot" src="assets/img/demo/app-desktop-demo-screenshot.jpg" />
                             </div>
                         </div>
-                    </section>
-                    <section class="bg-light pb-10 pt-0">
+                    </section> --}}
+                    {{-- <section class="bg-light pb-10 pt-0">
                         <div class="container px-5">
                             <div class="row gx-5 brands text-gray-500 align-items-center">
                                 <div class="col-6 col-sm-4 col-lg-2 d-flex justify-content-center mb-5 mb-lg-0">
@@ -141,7 +141,7 @@
                             <!-- Rounded SVG Border-->
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
                         </div>
-                    </section>
+                    </section> --}}
                     <section class="bg-white py-10">
                         <div class="container px-5">
                             <div class="row gx-5 text-center">

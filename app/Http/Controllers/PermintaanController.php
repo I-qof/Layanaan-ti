@@ -19,6 +19,10 @@ class PermintaanController extends Controller
       return view('views.permintaan.permintaan');
    }
 
+   public function viewPermintaan(){
+      return view('views.permintaan.permintaanView');
+   }
+
    public function store(Request $request)
    {
       $this->validate($request, [
