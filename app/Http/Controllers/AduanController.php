@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Aduan as AppAduan;
 use App\Models\Aduan;
+use App\Models\Inventaris;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
 class AduanController extends Controller
 {
-   
+
 
    public function index()
    {
@@ -18,15 +23,24 @@ class AduanController extends Controller
       return DataTables::of($data)->make(true);
    }
 
-   public function view(){
+   public function view()
+   {
       return view('views.pengaduan.pengaduan');
    }
-   public function viewAduan(){
+   public function viewAduan()
+   {
       return view('views.pengaduan.pengaduanView');
    }
-   public function add(){
-      return view('views.pengaduan.pengaduanAdd');
+   public function add()
+   {
+      $inventaris = Inventaris::where('deleted', 1)->get();
+      $random = Str::random(40);
+      return view('views.pengaduan.pengaduanAdd', [
+         'no_aduan' => $random,
+         'inventaris' => $inventaris
+      ]);
    }
+
 
    public function store(Request $request)
    {
@@ -36,11 +50,12 @@ class AduanController extends Controller
          'no_aduan' => 'required',
          'no_hp' => 'required',
          'lokasi' => 'required',
-         'email_atasan' => 'required',
-         'tgl_masuk' => 'required',
-         'tgl_keluar' => 'required',
-         'id_status' => 'required',
-         'nama_pengambil' => 'required',
+         'email' => 'required',
+         // 'email_atasan' => 'required',
+         // 'tgl_masuk' => 'required',
+         // 'tgl_keluar' => 'required',
+         // 'id_status' => 'required',
+         // 'nama_pengambil' => 'required',
       ]);
 
       $input = [
@@ -49,16 +64,33 @@ class AduanController extends Controller
          'no_aduan' => $request->no_aduan,
          'no_hp' => $request->no_hp,
          'lokasi' => $request->lokasi,
-         'email_atasan' => $request->email_atasan,
-         'tgl_masuk' => $request->tgl_masuk,
-         'tgl_keluar' => $request->tgl_keluar,
-         'id_status' => $request->id_status,
-         'nama_pengambil' => $request->nama_pengambil,
+         'email' => $request->email,
+         'tgl_masuk' => new DateTime(),
+         // 'email_atasan' => $request->email_atasan,
+         // 'tgl_keluar' => $request->tgl_keluar,
+         // 'id_status' => $request->id_status,
+         // 'nama_pengambil' => $request->nama_pengambil,
 
       ];
-
+      
       $data = Aduan::create($input);
+      try {
+         $this->sendMail();
+      } catch (\Throwable $th) {
+        dd($th);
+      }
       return response()->json($data);
+   }
+
+   public function sendMail()
+   {
+      $mailData = [
+         'title' => 'Mail from ItSolutionStuff.com',
+         'body' => 'This is for testing email using smtp.'
+      ];
+
+      Mail::to('muhammadfadly.mfd@gmail.com')->send(new AppAduan($mailData));
+
    }
 
 
@@ -76,19 +108,20 @@ class AduanController extends Controller
       return response()->json($data);
    }
 
-   public function update($id,Request $request){
-      $this->validate($request, [
-         // 'id_user' => 'required',
-         'keluhan' => 'required',
-         'no_aduan' => 'required',
-         'no_hp' => 'required',
-         'lokasi' => 'required',
-         'email_atasan' => 'required',
-         'tgl_masuk' => 'required',
-         'tgl_keluar' => 'required',
-         'id_status' => 'required',
-         'nama_pengambil' => 'required',
-      ]);
+   public function update($id, Request $request)
+   {
+      // $this->validate($request, [
+      //    // 'id_user' => 'required',
+      //    'keluhan' => 'required',
+      //    'no_aduan' => 'required',
+      //    'no_hp' => 'required',
+      //    'lokasi' => 'required',
+      //    'email_atasan' => 'required',
+      //    'tgl_masuk' => 'required',
+      //    'tgl_keluar' => 'required',
+      //    'id_status' => 'required',
+      //    'nama_pengambil' => 'required',
+      // ]);
 
       $input = [
          // 'id_user' => $request->id_user,
@@ -104,8 +137,7 @@ class AduanController extends Controller
 
       ];
 
-      $data = Aduan::where('id',$id)->update($input);
+      $data = Aduan::where('id', $id)->update($input);
       return response()->json($data);
-
    }
 }

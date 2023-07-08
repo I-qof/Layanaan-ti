@@ -3,6 +3,7 @@
 use App\Http\Controllers\AduanController;
 use App\Http\Controllers\BarangPakaiAduanController;
 use App\Http\Controllers\BarangPakaiPermintaanController;
+use App\Http\Controllers\DescAduanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventarisController;
 use App\Http\Controllers\JenisBarangController;
@@ -42,6 +43,8 @@ Route::post('/aduan/store', [AduanController::class, 'store']);
 Route::get('/view/aduan', [AduanController::class, 'viewAduan']);
 Route::get('/view/permintaan', [PermintaanController::class, 'viewPermintaan']);
 Route::get('/aduan/add', [AduanController::class, 'add']);
+Route::post('/desc-aduan/store', [DescAduanController::class, 'store']);
+Route::get('/desc-aduan/get/{no_aduan}', [DescAduanController::class, 'get']);
 
 
 
@@ -89,6 +92,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', [AduanController::class, 'index']);
         Route::get('/getById/{id}', [AduanController::class, 'getById']);
         // Route::post('/store', [AduanController::class, 'store']);
+        Route::post('/update/{id}', [AduanController::class, 'update']);
+        Route::get('/delete/{id}', [AduanController::class, 'destroy']);
+    });
+    Route::group(['prefix' => 'desc-aduan'], function () {
+        Route::get('/', [AduanController::class, 'index']);
+        Route::get('/getById/{id}', [AduanController::class, 'getById']);
+        
         Route::post('/update/{id}', [AduanController::class, 'update']);
         Route::get('/delete/{id}', [AduanController::class, 'destroy']);
     });

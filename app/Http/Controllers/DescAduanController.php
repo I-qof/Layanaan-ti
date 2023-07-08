@@ -11,7 +11,13 @@ class DescAduanController extends Controller
 {
     public function index()
    {
-      $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted = 1");
+      $data = DescAduan::where('deleted', 1)->get();
+      return DataTables::of($data)->make(true);
+   }
+
+    public function get($no_aduan)
+   {
+      $data = DescAduan::where('deleted', 1)->where('no_aduan', $no_aduan)->get();
       return DataTables::of($data)->make(true);
    }
 
@@ -22,33 +28,22 @@ class DescAduanController extends Controller
    public function store(Request $request)
    {
       $this->validate($request, [
-         'id_user' => 'required',
-         'keluhan' => 'required',
+         'id_inventaris' => 'required',
+         'kerusakan' => 'required',
          'no_aduan' => 'required',
-         'no_hp' => 'required',
-         'lokasi' => 'required',
-         'email_atasan' => 'required',
-         'tgl_masuk' => 'required',
-         'tgl_keluar' => 'required',
-         'id_status' => 'required',
-         'nama_pengambil' => 'required',
+         
       ]);
 
       $input = [
-         'id_user' => $request->id_user,
-         'keluhan' => $request->keluhan,
+         'id_inventaris' => $request->id_inventaris,
+         'kerusakan' => $request->kerusakan,
          'no_aduan' => $request->no_aduan,
-         'no_hp' => $request->no_hp,
-         'lokasi' => $request->lokasi,
-         'email_atasan' => $request->email_atasan,
-         'tgl_masuk' => $request->tgl_masuk,
-         'tgl_keluar' => $request->tgl_keluar,
-         'id_status' => $request->id_status,
-         'nama_pengambil' => $request->nama_pengambil,
+         
+  
 
       ];
 
-      $data = Aduan::create($input);
+      $data = DescAduan::create($input);
       return response()->json($data);
    }
 
@@ -69,8 +64,8 @@ class DescAduanController extends Controller
 
    public function update($id,Request $request){
       $this->validate($request, [
-         'id_user' => 'required',
-         'keluhan' => 'required',
+         'id_inventaris' => 'required',
+         'kerusakan' => 'required',
          'no_aduan' => 'required',
          'no_hp' => 'required',
          'lokasi' => 'required',
@@ -82,8 +77,8 @@ class DescAduanController extends Controller
       ]);
 
       $input = [
-         'id_user' => $request->id_user,
-         'keluhan' => $request->keluhan,
+         'id_inventaris' => $request->id_inventaris,
+         'kerusakan' => $request->kerusakan,
          'no_aduan' => $request->no_aduan,
          'no_hp' => $request->no_hp,
          'lokasi' => $request->lokasi,
