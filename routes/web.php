@@ -39,9 +39,9 @@ Route::get('/dashboard', function () {
     return view('views.dashboard');
 });
 Route::post('/aduan/store', [AduanController::class, 'store']);
-Route::post('/store', [PermintaanController::class, 'store']);
 Route::get('/view/aduan', [AduanController::class, 'viewAduan']);
 Route::get('/view/permintaan', [PermintaanController::class, 'viewPermintaan']);
+Route::get('/aduan/add', [AduanController::class, 'add']);
 
 
 
@@ -50,6 +50,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [HomeController::class, 'index']);
     Route::get('/aduan/view', [AduanController::class, 'view'])->name('home');
     Route::get('/permintaan/view', [PermintaanController::class, 'view']);
+    Route::get('/aduan/report', [AduanController::class, 'view']);
+    Route::get('/permintaan/report', [PermintaanController::class, 'view']);
+
     Route::get('/status/view', [StatusController::class, 'view']);
     Route::get('/sperpat/view', [SperpatController::class, 'view']);
     Route::get('/inventaris/view', [InventarisController::class, 'view']);

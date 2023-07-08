@@ -24,6 +24,9 @@ class AduanController extends Controller
    public function viewAduan(){
       return view('views.pengaduan.pengaduanView');
    }
+   public function add(){
+      return view('views.pengaduan.pengaduanAdd');
+   }
 
    public function store(Request $request)
    {

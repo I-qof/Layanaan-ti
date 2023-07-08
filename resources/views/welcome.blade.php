@@ -597,9 +597,32 @@
                 </footer>
             </div>
         </div>
+
+        {{-- modal --}}
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{{ URL::asset('assetsProfil/js/scripts.js') }}"></script>
         <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script src="{{ URL::asset('js/welcome.js') }}" type="text/javascript"></script>
+
         <script>
             AOS.init({
                 disable: 'mobile',
