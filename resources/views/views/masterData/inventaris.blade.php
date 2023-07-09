@@ -13,7 +13,7 @@
                         <table id="tabel-main" class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th><button class="btn btn-success" id="openModal">Tambah Data</button></th>
                                     <th>Nama Inventaris</th>
                                     <th>No. Inventaris</th>
                                     <th>Status Pemakaian</th>
@@ -50,15 +50,20 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Jenis Barang</label>
-                            <select name="id_jenis" id="id_jenis"></select>
+                            <select name="id_jenis" id="id_jenis" style="width: 100%">
+                                <option value="">-- Pilih Jenis Barang --</option>
+                                @foreach ($jenis as $item)
+                                    <option value="{{ $item->id }}">{{ $item->nama_jenis }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="Inventaris">No.Inventaris/ SN</label>
-                            <input type="color" class="form-control" name="no_inventaris" id="no_inventaris">
+                            <input type="text" class="form-control" name="no_inventaris" id="no_inventaris">
                         </div>
                         <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
-                            <textarea class="form-control" name="deskripsi" id="deskripsi"></textarea>
+                            <input class="form-control" name="deskripsi" id="deskripsi">
                         </div>
                     </div>
                     <div class="modal-footer">

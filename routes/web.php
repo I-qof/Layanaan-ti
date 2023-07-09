@@ -29,9 +29,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 // halaman awal
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/',[HomeController::class,'index'])->name('home');
 
 Auth::routes();
 
@@ -42,7 +43,7 @@ Route::get('/dashboard', function () {
 Route::post('/aduan/store', [AduanController::class, 'store']);
 Route::get('/view/aduan', [AduanController::class, 'viewAduan']);
 Route::get('/view/permintaan', [PermintaanController::class, 'viewPermintaan']);
-Route::get('/aduan/add', [AduanController::class, 'add']);
+Route::get('/aduan/add', [AduanController::class, 'add'])->name('aduanAdd');
 Route::post('/desc-aduan/store', [DescAduanController::class, 'store']);
 Route::get('/desc-aduan/get/{no_aduan}', [DescAduanController::class, 'get']);
 
@@ -51,18 +52,18 @@ Route::get('/desc-aduan/get/{no_aduan}', [DescAduanController::class, 'get']);
 Route::group(['middleware' => 'auth'], function () {
     // halaman view
     Route::get('/home', [HomeController::class, 'index']);
-    Route::get('/aduan/view', [AduanController::class, 'view'])->name('home');
+    Route::get('/aduan/view', [AduanController::class, 'view'])->name('aduan');
     Route::get('/permintaan/view', [PermintaanController::class, 'view']);
     Route::get('/aduan/report', [AduanController::class, 'view']);
     Route::get('/permintaan/report', [PermintaanController::class, 'view']);
 
-    Route::get('/status/view', [StatusController::class, 'view']);
-    Route::get('/sperpat/view', [SperpatController::class, 'view']);
-    Route::get('/inventaris/view', [InventarisController::class, 'view']);
-    Route::get('/jenis-barang/view', [JenisBarangController::class, 'view']);
-    Route::get('/user-role/view', [UserRoleController::class, 'view']);
-    Route::get('/role/view', [RoleController::class, 'view']);
-    Route::get('/permission/view', [PermissionController::class, 'view']);
+    Route::get('/status/view', [StatusController::class, 'view'])->name('status');
+    Route::get('/sperpat/view', [SperpatController::class, 'view'])->name('sperpat');
+    Route::get('/inventaris/view', [InventarisController::class, 'view'])->name('inventaris');
+    Route::get('/jenis-barang/view', [JenisBarangController::class, 'view'])->name('jenis-barang');
+    Route::get('/user-role/view', [UserRoleController::class, 'view'])->name('user-role');
+    Route::get('/role/view', [RoleController::class, 'view'])->name('role');
+    Route::get('/permission/view', [PermissionController::class, 'view'])->name('permission');
 
     //user-management
     Route::group(['prefix'=>'userroles'],function(){
@@ -92,15 +93,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', [AduanController::class, 'index']);
         Route::get('/getById/{id}', [AduanController::class, 'getById']);
         // Route::post('/store', [AduanController::class, 'store']);
+        Route::get('/updateView/{id}', [AduanController::class, 'updateView']);
         Route::post('/update/{id}', [AduanController::class, 'update']);
         Route::get('/delete/{id}', [AduanController::class, 'destroy']);
     });
     Route::group(['prefix' => 'desc-aduan'], function () {
-        Route::get('/', [AduanController::class, 'index']);
-        Route::get('/getById/{id}', [AduanController::class, 'getById']);
+        Route::get('/', [DescAduanController::class, 'index']);
+        Route::get('/getById/{id}', [DescAduanController::class, 'getById']);
         
-        Route::post('/update/{id}', [AduanController::class, 'update']);
-        Route::get('/delete/{id}', [AduanController::class, 'destroy']);
+        Route::post('/update/{id}', [DescAduanController::class, 'update']);
+        Route::get('/delete/{id}', [DescAduanController::class, 'destroy']);
     });
 
     Route::group(['prefix' => 'permintaan'], function () {

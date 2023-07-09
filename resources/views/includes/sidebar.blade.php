@@ -22,7 +22,7 @@
                        <li class="nav-item">
                            <a class="nav-link"
                                href="
-                               {{ url('/aduan/view/') }}
+                               {{ route('aduan') }}
                                ">Request</a>
                        </li>
                        <li class="nav-item"> <a class="nav-link"

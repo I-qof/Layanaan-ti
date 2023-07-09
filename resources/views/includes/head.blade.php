@@ -29,7 +29,7 @@
 <!-- inject:css -->
 <link rel="stylesheet" href="{{ URL::asset('assets/css/vertical-layout-light/style.css') }}">
 <!-- endinject -->
-<link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.png') }}" />
+<link rel="shortcut icon" href="{{ URL::asset('assets/images/pusrilogo.png') }}" />
 
 <!-- Template Main CSS File -->
 @stack('css')

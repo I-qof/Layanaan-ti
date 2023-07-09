@@ -43,8 +43,7 @@ var table = $("#tabel-main").DataTable({
 $("#tabel-main").on("click", ".editData", function () {
     data = table.rows($(this).closest("tr").index()).data()[0];
     id = data.id;
-    $("#nama_status").val(data.nama_status);
-    $("#color").val(data.color);
+    $("#nama_jenis").val(data.nama_jenis);
     $("#modalAdd").modal("show");
 });
 

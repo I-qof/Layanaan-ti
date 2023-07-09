@@ -13,7 +13,8 @@
                         <table id="tabel-main" class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>Actions</th>
+                                    <th>No</th>
                                     <th>No Aduan</th>
                                     <th>Nama User</th>
                                     <th>Tgl. Masuk</th>
@@ -21,7 +22,6 @@
                                     <th>No. Hp</th>
                                     <th>Status</th>
                                     <th>Nama Pengambil</th>
-                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>

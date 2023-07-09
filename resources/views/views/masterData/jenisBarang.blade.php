@@ -13,7 +13,7 @@
                         <table id="tabel-main" class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th><button class="btn btn-success" id="openModal">Tambah Data</button></th>
                                     <th>Jenis Barang</th>
                                     <th>Action</th>
                                 </tr>

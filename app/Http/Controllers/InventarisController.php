@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventaris;
+use App\Models\Jenis_barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
@@ -16,7 +17,10 @@ class InventarisController extends Controller
    }
 
    public function view(){
-      return view('views.masterData.inventaris');
+      $jenis = Jenis_barang::where('deleted',1)->get();
+      return view('views.masterData.inventaris',[
+         'jenis'=>$jenis
+      ]);
    }
 
    public function store(Request $request)
@@ -37,7 +41,7 @@ class InventarisController extends Controller
          'id_user_pemakai' => $request->id_user_pemakai,
          'no_inventaris' => $request->no_inventaris,
          'deskripsi' => $request->deskripsi,
-         'status_pemakaian' => $request->status_pemakaian,
+         // 'status_pemakaian' => $request->status_pemakaian,
         
       ];
 
@@ -77,7 +81,7 @@ class InventarisController extends Controller
          'id_user_pemakai' => $request->id_user_pemakai,
          'no_inventaris' => $request->no_inventaris,
          'deskripsi' => $request->deskripsi,
-         'status_pemakaian' => $request->status_pemakaian,
+         // 'status_pemakaian' => $request->status_pemakaian,
         
       ];
 

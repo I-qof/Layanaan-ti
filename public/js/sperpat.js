@@ -28,6 +28,12 @@ var table = $("#tabel-main").DataTable({
         {   
             data: "status_pemakaian",
             className: "text-center",
+            render:function(data,type,meta,row){
+                if(data == 1){
+                    return("<div class='badge badge-danger'>Tidak dipakai</div>");
+                }
+                return("<div class='badge badge-success'>Sedang dipakai</div>")
+            }
         },
        
       
@@ -46,18 +52,23 @@ var table = $("#tabel-main").DataTable({
     ],
 });
 
+$("#id_jenis").select2();
 
 
 $("#tabel-main").on("click", ".editData", function () {
     data = table.rows($(this).closest("tr").index()).data()[0];
     id = data.id;
-    $("#nama_status").val(data.nama_status);
-    $("#color").val(data.color);
+    $("#nama_sperpat").val(data.nama_sperpat);
+    $("#id_jenis").val(data.id_jenis).trigger("change");
+    $("#no_inventaris").val(data.no_inventaris);
+    $("#deskripsi").val(data.deskripsi);
     $("#modalAdd").modal("show");
 });
 
 $("#openModal").on("click", function () {
     id = 0;
+    $("#formData").trigger("reset");
+    $("#id_jenis").val("").trigger("change");
     $("#modalAdd").modal("show")
 });
 

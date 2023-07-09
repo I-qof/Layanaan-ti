@@ -13,7 +13,7 @@
                         <table id="tabel-main" class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col"><button class="btn btn-outline-success" id="openModal">Tambah Data</button></th>
+                                    <th scope="col"><button class="btn btn-success" id="openModal">Tambah Data</button></th>
                                     <th scope="col">Nama status</th>
                                     <th scope="col">Warna</th>
                                     <th scope="col">Action</th>

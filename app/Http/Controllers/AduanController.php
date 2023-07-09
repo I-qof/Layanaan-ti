@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Mail\Aduan as AppAduan;
 use App\Models\Aduan;
+use App\Models\DescAduan;
 use App\Models\Inventaris;
+use App\Models\Sperpat;
+use App\Models\Status;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,7 +22,8 @@ class AduanController extends Controller
 
    public function index()
    {
-      $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted = 1");
+      // $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted = 1");
+      $data = Aduan::rightJoin('status', 'aduan.id_status', '=', 'status.id')->where('aduan.deleted', 1)->get();
       return DataTables::of($data)->make(true);
    }
 
@@ -38,6 +42,23 @@ class AduanController extends Controller
       return view('views.pengaduan.pengaduanAdd', [
          'no_aduan' => $random,
          'inventaris' => $inventaris
+      ]);
+   }
+   public function updateView($id)
+   {
+      $inventaris = Sperpat::where('deleted', 1)->get();
+      $status = Status::where('deleted', 1)->get();
+
+      $data = Aduan::rightJoin('status', 'aduan.id_status', '=', 'status.id')->where('aduan.id', $id)->where('aduan.deleted', 1)->first();
+      $count = DescAduan::rightJoin('status', 'desc_aduan.id_status', '=', 'status.id')
+      ->where('desc_aduan.deleted', 1)->where('desc_aduan.no_aduan', $data->no_aduan)
+      ->count();
+      return view('views.pengaduan.pengaduanEdit', [
+         'data' => $data,
+         'total' => $count,
+         'sperpat' => $inventaris,
+         'status' => $status
+
       ]);
    }
 
@@ -72,12 +93,12 @@ class AduanController extends Controller
          // 'nama_pengambil' => $request->nama_pengambil,
 
       ];
-      
+
       $data = Aduan::create($input);
       try {
          $this->sendMail();
       } catch (\Throwable $th) {
-        dd($th);
+         dd($th);
       }
       return response()->json($data);
    }
@@ -90,7 +111,6 @@ class AduanController extends Controller
       ];
 
       Mail::to('muhammadfadly.mfd@gmail.com')->send(new AppAduan($mailData));
-
    }
 
 

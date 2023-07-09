@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jenis_barang;
 use App\Models\Sperpat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,10 @@ class SperpatController extends Controller
     }
  
     public function view(){
-      return view('views.masterData.sperpat');
+      $jenis = Jenis_barang::where('deleted',1)->get();
+      return view('views.masterData.sperpat',[
+         'jenis'=>$jenis
+      ]);
    }
  
     public function store(Request $request)
