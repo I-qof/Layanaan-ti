@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
+
+
 class AduanController extends Controller
 {
 
@@ -25,6 +27,12 @@ class AduanController extends Controller
       // $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted = 1");
       $data = Aduan::rightJoin('status', 'aduan.id_status', '=', 'status.id')->where('aduan.deleted', 1)->get();
       return DataTables::of($data)->make(true);
+   }
+
+   public function search($no_aduan)
+   {
+      $data = Aduan::where('no_aduan', 'like', "%{$no_aduan}%")->first();
+      return response()->json($data);
    }
 
    public function view()
@@ -51,8 +59,8 @@ class AduanController extends Controller
 
       $data = Aduan::rightJoin('status', 'aduan.id_status', '=', 'status.id')->where('aduan.id', $id)->where('aduan.deleted', 1)->first();
       $count = DescAduan::rightJoin('status', 'desc_aduan.id_status', '=', 'status.id')
-      ->where('desc_aduan.deleted', 1)->where('desc_aduan.no_aduan', $data->no_aduan)
-      ->count();
+         ->where('desc_aduan.deleted', 1)->where('desc_aduan.no_aduan', $data->no_aduan)
+         ->count();
       return view('views.pengaduan.pengaduanEdit', [
          'data' => $data,
          'total' => $count,
@@ -61,7 +69,6 @@ class AduanController extends Controller
 
       ]);
    }
-
 
    public function store(Request $request)
    {
@@ -86,6 +93,7 @@ class AduanController extends Controller
          'no_hp' => $request->no_hp,
          'lokasi' => $request->lokasi,
          'email' => $request->email,
+         'email_atasan' => $request->email_atasan,
          'tgl_masuk' => new DateTime(),
          // 'email_atasan' => $request->email_atasan,
          // 'tgl_keluar' => $request->tgl_keluar,
@@ -95,22 +103,34 @@ class AduanController extends Controller
       ];
 
       $data = Aduan::create($input);
+      $dataEmail = [$request->email, $request->email_atasan];
+      $dataAduan = Aduan::rightJoin('status', 'aduan.id_status', '=', 'status.id')->where('aduan.no_aduan', $request->no_aduan)->where('aduan.deleted', 1)->first();
+      // dd($dataAduan);
       try {
-         $this->sendMail();
+         foreach ($dataEmail as $key => $value) {
+            
+            $this->sendMail($value,$dataAduan);
+         }
       } catch (\Throwable $th) {
          dd($th);
       }
       return response()->json($data);
    }
 
-   public function sendMail()
+   public function sendMail($email,$data)
    {
+      // dd($data);
       $mailData = [
-         'title' => 'Mail from ItSolutionStuff.com',
-         'body' => 'This is for testing email using smtp.'
+         'keluhan' => $data->keluhan,
+         'no_aduan' => $data->no_aduan,
+         'no_hp' => $data->no_hp,
+         'lokasi' => $data->lokasi,
+         'email' => $data->email,
+         'email_atasan' => $data->email_atasan,
+        
       ];
 
-      Mail::to('muhammadfadly.mfd@gmail.com')->send(new AppAduan($mailData));
+      Mail::to($email)->send(new AppAduan($mailData));
    }
 
 

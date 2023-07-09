@@ -20,7 +20,7 @@
                     <!-- Navbar-->
                     <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
                         <div class="container px-5">
-                            <a class="navbar-brand text-primary" href="index.html">Layanaan IT</a>
+                            <img src="{{ URL::asset('assets/images/pusri_col.png') }}" style="width: 200px;height: 50px;" alt="">
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ms-auto me-lg-5">

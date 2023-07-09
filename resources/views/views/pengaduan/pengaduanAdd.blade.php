@@ -92,7 +92,13 @@
                                             <section>
                                                 <h3>keluhan</h3>
                                                 <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label>Email Atasan</label>
+                                                        <input type="email" id="email_atasan" name="email_atasan" required
+                                                            class="form-control" placeholder="Masukkan email atasan anda ">
+                                                    </div>
                                                     <label>Deskripsi Keluhan</label>
+                                                    
                                                     <textarea type="text" class="form-control w-100" id="keluhan" required name="keluhan" style="width: 100%"
                                                         aria-describedby="text" placeholder="Masukkan deskripsi keluhan anda"></textarea>
                                                 </div>

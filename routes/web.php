@@ -29,10 +29,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 // halaman awal
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/', function () {
+    return view('welcome');
+});
+// Route::get('/',[HomeController::class,'index'])->name('home');
 
 Auth::routes();
 
@@ -40,6 +40,8 @@ Auth::routes();
 Route::get('/dashboard', function () {
     return view('views.dashboard');
 });
+Route::get('/aduan/search/{no_aduan}',[AduanController::class,'search']);
+
 Route::post('/aduan/store', [AduanController::class, 'store']);
 Route::get('/view/aduan', [AduanController::class, 'viewAduan']);
 Route::get('/view/permintaan', [PermintaanController::class, 'viewPermintaan']);

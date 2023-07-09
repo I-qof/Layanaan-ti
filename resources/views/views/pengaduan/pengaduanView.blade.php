@@ -25,7 +25,8 @@
                 <!-- Navbar-->
                 <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
                     <div class="container px-5">
-                        <a class="navbar-brand text-primary" href="index.html">Layanaan IT</a>
+                        <img src="{{ URL::asset('assets/images/pusri_col.png') }}" style="width: 200px;height: 50px;"
+                            alt="">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
@@ -56,19 +57,18 @@
                                     <div class="row justify-content-center">
                                         <div class="input-group w-75 ">
 
-                                            <input type="text" class="form-control mr-3 text-center"
+                                            <input type="text" id="inp_cari" name="inp_cari"
+                                                class="form-control mr-3 text-center"
                                                 placeholder="Silahkan masukkan nomor tiket anda">
-                                          
 
-                                                <a class="btn btn-primary fw-500 me-2" id="cari"><i
-                                                        class="fa fa-search"></i>
-                                                </a>
-                                           
+
+                                            <a class="btn btn-primary fw-500 me-2" id="cari"><i
+                                                    class="fa fa-search"></i>
+                                            </a>
                                         </div>
-
-
                                     </div>
-                                    <a class="btn btn-outline-green fw-500 me-2 mt-4" id="tambah" href="{{ URL::to('/aduan/add') }}">Tambah Aduan</a>
+                                    <a class="btn btn-outline-green fw-500 me-2 mt-4" id="tambah"
+                                        href="{{ URL::to('/aduan/add') }}">Tambah Aduan</a>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
 
                     </div>
                 </header>
-             
+
             </main>
         </div>
         <div id="layoutDefault_footer">
@@ -158,61 +158,47 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">DESKRIPSI ADUAN</h5>
-                    <button type="button"  class="btn cancel" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="btn cancel" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="card " data-aos="fade-right">
                         <div class="row g-0">
-                            <div class="col-md-4"><img class="img-fluid" src="https://source.unsplash.com/6LBBOwkPzyQ/800x550" alt="..." /></div>
+                            <div class="col-md-4"><img class="img-fluid"
+                                    src="https://source.unsplash.com/6LBBOwkPzyQ/800x550" alt="..." /></div>
                             <div class="col-md-8">
                                 <div class="card-body d-flex   h-100 flex-column">
-                                    <h3 class="card-title fw-bold text-uppercase mb-2">Cocooil</h3>
+                                    <h3 class="card-title fw-bold text-uppercase mb-2">Deskripsi Aduan </h3>
                                     <div class="row">
-                                        <div class="col-6"><p>test</p></div>
-                                        <div class="col-6"><ul class="fa-ul pricing-list">
-                                            <li class="pricing-list-item">
-                                                <span class="fa-li"><svg class="svg-inline--fa fa-check-circle fa-w-16 text-teal" aria-hidden="true" focusable="false" data-prefix="far" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path></svg><!-- <i class="far fa-check-circle text-teal"></i> Font Awesome fontawesome.com --></span>
-                                                <span class="text-dark">Up to 15 users</span>
-                                            </li>
-                                            <li class="pricing-list-item">
-                                                <span class="fa-li"><svg class="svg-inline--fa fa-check-circle fa-w-16 text-teal" aria-hidden="true" focusable="false" data-prefix="far" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path></svg><!-- <i class="far fa-check-circle text-teal"></i> Font Awesome fontawesome.com --></span>
-                                                <span class="text-dark">Email and live chat support</span>
-                                            </li>
-                                            <li class="pricing-list-item">
-                                                <span class="fa-li"><svg class="svg-inline--fa fa-check-circle fa-w-16 text-teal" aria-hidden="true" focusable="false" data-prefix="far" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path></svg><!-- <i class="far fa-check-circle text-teal"></i> Font Awesome fontawesome.com --></span>
-                                                <span class="text-dark">Style customizer</span>
-                                            </li>
-                                            <li class="pricing-list-item">
-                                                <span class="fa-li"><svg class="svg-inline--fa fa-check-circle fa-w-16 text-teal" aria-hidden="true" focusable="false" data-prefix="far" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path></svg><!-- <i class="far fa-check-circle text-teal"></i> Font Awesome fontawesome.com --></span>
-                                                <span class="text-dark">Custom components</span>
-                                            </li>
-                                            <li class="pricing-list-item">
-                                                <span class="fa-li"><svg class="svg-inline--fa fa-check-circle fa-w-16 text-teal" aria-hidden="true" focusable="false" data-prefix="far" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path></svg><!-- <i class="far fa-check-circle text-teal"></i> Font Awesome fontawesome.com --></span>
-                                                <span class="text-dark">Expanded utilities</span>
-                                            </li>
-                                            <li class="pricing-list-item">
-                                                <span class="fa-li"><svg class="svg-inline--fa fa-check-circle fa-w-16 text-teal" aria-hidden="true" focusable="false" data-prefix="far" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path></svg><!-- <i class="far fa-check-circle text-teal"></i> Font Awesome fontawesome.com --></span>
-                                                <span class="text-dark">Third-party integration</span>
-                                            </li>
-                                            <li class="pricing-list-item">
-                                                <span class="fa-li"><svg class="svg-inline--fa fa-check-circle fa-w-16 text-teal" aria-hidden="true" focusable="false" data-prefix="far" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path></svg><!-- <i class="far fa-check-circle text-teal"></i> Font Awesome fontawesome.com --></span>
-                                                <span class="text-dark">Layout options</span>
-                                            </li>
-                                        </ul></div>
+                                        <div class="col-6">
+                                            <p><span id="no_aduan">test</span></p>
+                                            <p><span id="email">test</span></p>
+                                            <p><span id="keluhan">test</span></p>
+                                            <p><span id="no_hp">test</span></p>
+                                            <p><span id="lokasi">test</span></p>
+                                            <p><span id="email_atasan">test</span></p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p><span id="tgl_masuk">test</span></p>
+                                            <p><span id="tgl_keluar">test</span></p>
+                                            <p><span id="nama_status">test</span></p>
+                                            <p><span id="nama_pengambil">test</span></p>
+
+                                        </div>
                                     </div>
-                                 
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger close" data-dismiss="modal">Oke</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger close" data-dismiss="modal">Oke</button>
             </div>
         </div>
+    </div>
     </div>
     <div class="modal fade" id="modalHasilFailed" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -229,7 +215,9 @@
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-6">
                                 <div class="text-center mt-4">
-                                    <img class="img-fluid p-4" src="{{ URL::asset('/assetsProfil/assets/img/illustrations/404-error.svg') }}" alt="..." />
+                                    <img class="img-fluid p-4"
+                                        src="{{ URL::asset('/assetsProfil/assets/img/illustrations/404-error.svg') }}"
+                                        alt="..." />
                                     <p class="lead">Data aduan ini tidak ditemukan didalam system.</p>
                                     {{-- <a class="text-arrow-icon" href="index.html">
                                         <i class="ms-0 me-1" data-feather="arrow-left"></i>
@@ -241,12 +229,15 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    
+
                     <button type="button" class="btn btn-danger close" data-dismiss="modal">Oke</button>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        var APP_URL = "{{ env('APP_URL') }}";
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
     <script src="{{ URL::asset('assetsProfil/js/scripts.js') }}"></script>
