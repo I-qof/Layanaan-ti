@@ -201,34 +201,5 @@ var table = $("#tabel-main").DataTable({
     ],
 });
 
-$("#selWC").select2({
-    minimumInputLength: 2,
-    containerCssClass: ":all:",
-    placeholder: "Pilih Unit Kerja",
-    multiple: true,
-    dropdownParent: $("#modalEditData .modal-body"),
-    ajax: {
-        url: APP_URL + "/inspPemeriksa", //the url to call
-        method: "GET",
-        dataType: "json",
-        delay: 250,
-        data: function (params) {
-            return {
-                q: params.term, // search term
-                page: params.page,
-            };
-        },
-        processResults: function (data, params) {
-            return {
-                results: $.map(data, function (obj) {
-                    return {
-                        text: obj.nama_pemeriksa,
-                        id: obj.nama_pemeriksa,
-                    };
-                }),
-            };
-        },
-        cache: true,
-    },
-});
+
 

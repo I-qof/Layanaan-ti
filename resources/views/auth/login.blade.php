@@ -7,7 +7,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
+  <title>Layanaan TI </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ URL::asset('assets/vendors/feather/feather.css')}}">
   <link rel="stylesheet" href="{{ URL::asset('assets/vendors/mdi/css/materialdesignicons.min.css')}}">
@@ -21,7 +21,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ URL::asset('assets/css/vertical-layout-light/style.css')}}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.png')}}" />
+  <link rel="shortcut icon" href="{{ URL::asset('assets/images/pusrilogo.png')}}" />
 </head>
 
 <body class="sidebar-mini">
@@ -32,10 +32,10 @@
           <div class="col-lg-6 d-flex align-items-center justify-content-center">
             <div class="auth-form-transparent text-left p-3">
               <div class="brand-logo">
-                <img src="{{ URL::asset('assets/images/logo.svg')}}" alt="logo">
+                <img src="{{ URL::asset('assets/images/pusri_col.png')}}" style="width: 250px;height: 70px;" alt="logo">
               </div>
-              <h4>Welcome back!</h4>
-              <h6 class="fw-light">Happy to see you again!</h6>
+              <h4>Selamat datang kembali!</h4>
+              <h6 class="fw-light">Kami senang melihatmu kembali!</h6>
               <form class="pt-3" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
@@ -61,13 +61,13 @@
                   </div>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
-                  <div class="form-check">
+                  {{-- <div class="form-check">
                     <label class="form-check-label text-muted">
                       <input type="checkbox" class="form-check-input">
                       Keep me signed in
                     </label>
                   </div>
-                  <a href="#" class="auth-link text-black">Forgot password?</a>
+                  <a href="#" class="auth-link text-black">Forgot password?</a> --}}
                 </div>
                 <div class="my-3">
                   <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">LOGIN</button>
