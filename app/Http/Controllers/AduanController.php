@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
-
+use function Yajra\DataTables\Services\response;
 
 class AduanController extends Controller
 {
@@ -32,6 +32,9 @@ class AduanController extends Controller
    public function search($no_aduan)
    {
       $data = Aduan::where('no_aduan', 'like', "%{$no_aduan}%")->first();
+      if($data==null){
+         abort(404,'data tidak ditemukan');
+      }
       return response()->json($data);
    }
 

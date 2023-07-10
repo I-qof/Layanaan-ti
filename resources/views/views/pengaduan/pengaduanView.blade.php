@@ -35,8 +35,8 @@
                                 <li class="nav-item"><a class="nav-link " href="{{ url('/') }}">Home</a></li>
                                 <li class="nav-item"><a class="nav-link active"
                                         href="{{ url('/view/aduan') }}">Aduan</a></li>
-                                <li class="nav-item"><a class="nav-link "
-                                        href="{{ url('/view/permintaan') }}">Permintaan</a></li>
+                                {{-- <li class="nav-item"><a class="nav-link "
+                                        href="{{ url('/view/permintaan') }}">Permintaan</a></li> --}}
 
                             </ul>
                             <a class="btn fw-500 ms-lg-4 btn-primary" href="{{ url('/login') }}">
@@ -81,66 +81,11 @@
             </main>
         </div>
         <div id="layoutDefault_footer">
-            <footer class="footer pt-10 pb-5 mt-auto bg-dark footer-dark">
-                <div class="container px-5">
-                    <div class="row gx-5">
-                        <div class="col-lg-3">
-                            <div class="footer-brand">SB UI Kit Pro</div>
-                            <div class="mb-3">Design made easy</div>
-                            <div class="icon-list-social mb-5">
-                                <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
-                                <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
-                                <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
-                                <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-9">
-                            <div class="row gx-5">
-                                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                                    <div class="text-uppercase-expanded text-xs mb-4">Product</div>
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="mb-2"><a href="#!">Landing</a></li>
-                                        <li class="mb-2"><a href="#!">Pages</a></li>
-                                        <li class="mb-2"><a href="#!">Sections</a></li>
-                                        <li class="mb-2"><a href="#!">Documentation</a></li>
-                                        <li><a href="#!">Changelog</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                                    <div class="text-uppercase-expanded text-xs mb-4">Technical</div>
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="mb-2"><a href="#!">Documentation</a></li>
-                                        <li class="mb-2"><a href="#!">Changelog</a></li>
-                                        <li class="mb-2"><a href="#!">Theme Customizer</a></li>
-                                        <li><a href="#!">UI Kit</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                                    <div class="text-uppercase-expanded text-xs mb-4">Includes</div>
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="mb-2"><a href="#!">Utilities</a></li>
-                                        <li class="mb-2"><a href="#!">Components</a></li>
-                                        <li class="mb-2"><a href="#!">Layouts</a></li>
-                                        <li class="mb-2"><a href="#!">Code Samples</a></li>
-                                        <li class="mb-2"><a href="#!">Products</a></li>
-                                        <li class="mb-2"><a href="#!">Affiliates</a></li>
-                                        <li><a href="#!">Updates</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="text-uppercase-expanded text-xs mb-4">Legal</div>
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="mb-2"><a href="#!">Privacy Policy</a></li>
-                                        <li class="mb-2"><a href="#!">Terms and Conditions</a></li>
-                                        <li><a href="#!">License</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="my-5" />
-                    <div class="row gx-5 align-items-center">
-                        <div class="col-md-6 small">Copyright &copy; Your Website 2021</div>
+            <footer class="footer pt-5 pb-5 mt-auto bg-dark footer-dark">
+                <div class="container">
+                    
+                    <div class="row  align-items-center">
+                        <div class="col-md-6 small">Copyright © 2023, Layanaan-TI. All rights reserved.</div>
                         <div class="col-md-6 text-md-end small">
                             <a href="#!">Privacy Policy</a>
                             &middot;
@@ -152,8 +97,7 @@
         </div>
     </div>
     {{-- modal --}}
-    <div class="modal fade" id="modalHasil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="modalHasil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -163,42 +107,42 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="card " data-aos="fade-right">
+                    <div class="card" data-aos="fade-right">
                         <div class="row g-0">
-                            <div class="col-md-4"><img class="img-fluid"
-                                    src="https://source.unsplash.com/6LBBOwkPzyQ/800x550" alt="..." /></div>
+                            <div class="col-md-4">
+                                <img class="img-fluid" src="https://source.unsplash.com/6LBBOwkPzyQ/800x550" alt="...">
+                            </div>
                             <div class="col-md-8">
-                                <div class="card-body d-flex   h-100 flex-column">
-                                    <h3 class="card-title fw-bold text-uppercase mb-2">Deskripsi Aduan </h3>
+                                <div class="card-body d-flex h-100 flex-column">
+                                    <h3 class="card-title fw-bold text-uppercase mb-2">Deskripsi Aduan</h3>
                                     <div class="row">
                                         <div class="col-6">
-                                            <p><span id="no_aduan">test</span></p>
-                                            <p><span id="email">test</span></p>
-                                            <p><span id="keluhan">test</span></p>
-                                            <p><span id="no_hp">test</span></p>
-                                            <p><span id="lokasi">test</span></p>
-                                            <p><span id="email_atasan">test</span></p>
+                                            <p><strong>No Aduan:</strong> <span id="no_aduan">--</span></p>
+                                            <p><strong>Email:</strong> <span id="email">--</span></p>
+                                            <p><strong>Keluhan:</strong> <span id="keluhan">--</span></p>
+                                            <p><strong>No HP:</strong> <span id="no_hp">--</span></p>
+                                            <p><strong>Lokasi:</strong> <span id="lokasi">--</span></p>
+                                            <p><strong>Email Atasan:</strong> <span id="email_atasan">--</span></p>
                                         </div>
                                         <div class="col-6">
-                                            <p><span id="tgl_masuk">test</span></p>
-                                            <p><span id="tgl_keluar">test</span></p>
-                                            <p><span id="nama_status">test</span></p>
-                                            <p><span id="nama_pengambil">test</span></p>
-
+                                            <p><strong>Tanggal Masuk:</strong> <span id="tgl_masuk">--</span></p>
+                                            <p><strong>Tanggal Keluar:</strong> <span id="tgl_keluar">--</span></p>
+                                            <p><strong>Nama Status:</strong> <span id="nama_status">--</span></p>
+                                            <p><strong>Nama Pengambil:</strong> <span id="nama_pengambil">--</span></p>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger close" data-dismiss="modal">Oke</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger close" data-dismiss="modal">Oke</button>
+                </div>
             </div>
         </div>
     </div>
+    
     </div>
     <div class="modal fade" id="modalHasilFailed" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
