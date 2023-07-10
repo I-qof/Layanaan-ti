@@ -43,7 +43,7 @@ Route::get('/dashboard', function () {
 Route::get('/aduan/search/{no_aduan}',[AduanController::class,'search']);
 
 Route::post('/aduan/store', [AduanController::class, 'store']);
-Route::get('/view/aduan', [AduanController::class, 'viewAduan']);
+Route::get('/view/aduan', [AduanController::class, 'viewAduan'])->name('viewAduan');
 Route::get('/view/permintaan', [PermintaanController::class, 'viewPermintaan']);
 Route::get('/aduan/add', [AduanController::class, 'add'])->name('aduanAdd');
 Route::post('/desc-aduan/store', [DescAduanController::class, 'store']);
