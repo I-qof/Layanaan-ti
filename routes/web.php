@@ -51,7 +51,7 @@ Route::get('/desc-aduan/get/{no_aduan}', [DescAduanController::class, 'get']);
 
 
 
-Route::group(['middleware' => 'auth'], function () {
+// Route::group(['middleware' => 'auth'], function () {
     // halaman view
     Route::get('/home', [HomeController::class, 'index']);
     Route::get('/aduan/view', [AduanController::class, 'view'])->name('aduan');
@@ -162,4 +162,4 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/update/{id}', [StatusController::class, 'update']);
         Route::get('/delete/{id}', [StatusController::class, 'destroy']);
     });
-});
+// });
