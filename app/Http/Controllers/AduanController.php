@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
-use function Yajra\DataTables\Services\response;
-
 class AduanController extends Controller
 {
 
