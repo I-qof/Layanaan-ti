@@ -146,60 +146,7 @@
                         </div>
                     </section>
                     
-                    <section class="bg-white py-10">
-                        <div class="container px-5">
-                            <div class="row gx-5 align-items-center justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="badge bg-primary-soft text-primary badge-marketing rounded-pill mb-3">Get Started!</div>
-                                    <div class="mb-5">
-                                        <h2>Here's What You Get</h2>
-                                        <p class="lead">When you purchase this UI Kit, you get access to a robust suite of powerful tools and components to help you build your next landing page quickly and easily.</p>
-                                    </div>
-                                    <div class="row gx-5">
-                                        <div class="col-md-6 mb-4">
-                                            <h6>Landing Pages</h6>
-                                            <p class="mb-2 small">We've crafted landing page examples for many popular business and product types.</p>
-                                            <a class="small text-arrow-icon" href="#!">
-                                                Learn More
-                                                <i data-feather="arrow-right"></i>
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-                                            <h6>Page Examples</h6>
-                                            <p class="mb-2 small mb-0">Use our pre-built page examples to quickly create inner pages to your website.</p>
-                                            <a class="small text-arrow-icon" href="#!">
-                                                Learn More
-                                                <i data-feather="arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row gx-5">
-                                        <div class="col-md-6 mb-4">
-                                            <h6>Layouts</h6>
-                                            <p class="mb-2 small mb-0">Our flex box based layout options make your site beautifully responsive and adaptable to any device.</p>
-                                            <a class="small text-arrow-icon" href="#!">
-                                                Learn More
-                                                <i data-feather="arrow-right"></i>
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-                                            <h6>Modular Sections</h6>
-                                            <p class="small mb-0">All of the sections on each page are modular, so you can drop them into an existing page, or start with a new one!</p>
-                                            <a class="small text-arrow-icon" href="#!">
-                                                Learn More
-                                                <i data-feather="arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9 col-lg-6" data-aos="slide-left">
-                                    <div class="mb-4">
-                                        <div class="content-skewed content-skewed-left"><img class="img-fluid content-skewed-item shadow-lg rounded-3" src="assets/img/demo/app-desktop-demo-screenshot.jpg" /></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    
                     <section class="bg-light pt-10">
                         <div class="container px-5">
                             <div class="text-center mb-5">
@@ -312,56 +259,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
                         </div>
                     </section>
-                    <section class="bg-dark pb-10 pt-15">
-                        <div class="container px-5">
-                            <div class="row gx-5 mb-10 mt-5">
-                                <div class="col-lg-6 mb-5">
-                                    <div class="d-flex h-100">
-                                        <div class="icon-stack flex-shrink-0 bg-teal text-white"><i class="fas fa-question"></i></div>
-                                        <div class="ms-4">
-                                            <h5 class="text-white">What is SB UI Kit Pro?</h5>
-                                            <p class="text-white-50">SB UI Kit Pro is a fully coded, responsive, Bootstrap based UI toolkit for developers.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-5">
-                                    <div class="d-flex h-100">
-                                        <div class="icon-stack flex-shrink-0 bg-teal text-white"><i class="fas fa-question"></i></div>
-                                        <div class="ms-4">
-                                            <h5 class="text-white">What can I build with SB UI Kit Pro?</h5>
-                                            <p class="text-white-50">Build anything you want to using this UI kit! It is flexible, multipurpose, and full of tools for you to use during development.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-5 mb-lg-0">
-                                    <div class="d-flex h-100">
-                                        <div class="icon-stack flex-shrink-0 bg-teal text-white"><i class="fas fa-question"></i></div>
-                                        <div class="ms-4">
-                                            <h5 class="text-white">Do I get free updates?</h5>
-                                            <p class="text-white-50">All of Start Bootstrap's premium products will come with updates for feature additions, bugfixes, and other small updates.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex h-100">
-                                        <div class="icon-stack flex-shrink-0 bg-teal text-white"><i class="fas fa-question"></i></div>
-                                        <div class="ms-4">
-                                            <h5 class="text-white">What frameworks does it integrate with?</h5>
-                                            <p class="text-white-50">Our HTML based pro products are build with framework integration in mind. The compiled code is HTML and CSS, which is able to integrate with any framework.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row gx-5 justify-content-center text-center">
-                                <div class="col-lg-8">
-                                    <div class="badge bg-transparent-light rounded-pill badge-marketing mb-4">Get Started</div>
-                                    <h2 class="text-white">Get SB UI Kit Pro and save time.</h2>
-                                    <p class="lead text-white-50 mb-5">Start Bootstrap's premium UI Kit beautifully and intuitively extends the Bootstrap framework making it easy to build your next project!</p>
-                                    <a class="btn btn-teal fw-500" href="#!">Buy Now!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                  
                     <section class="bg-img-cover overlay overlay-primary overlay-80 pt-15" style="background-image: url('https://source.unsplash.com/e3OUQGT9bWU/1400x900')">
                         <!-- Spacer for the image section-->
                         <div style="height: 35vh"></div>
@@ -442,66 +340,12 @@
                 </main>
             </div>
             <div id="layoutDefault_footer">
-                <footer class="footer pt-10 pb-5 mt-auto bg-dark footer-dark">
-                    <div class="container px-5">
-                        <div class="row gx-5">
-                            <div class="col-lg-3">
-                                <div class="footer-brand">SB UI Kit Pro</div>
-                                <div class="mb-3">Design made easy</div>
-                                <div class="icon-list-social mb-5">
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-instagram"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-facebook"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-github"></i></a>
-                                    <a class="icon-list-social-link" href="#!"><i class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <div class="row gx-5">
-                                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                                        <div class="text-uppercase-expanded text-xs mb-4">Product</div>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><a href="#!">Landing</a></li>
-                                            <li class="mb-2"><a href="#!">Pages</a></li>
-                                            <li class="mb-2"><a href="#!">Sections</a></li>
-                                            <li class="mb-2"><a href="#!">Documentation</a></li>
-                                            <li><a href="#!">Changelog</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                                        <div class="text-uppercase-expanded text-xs mb-4">Technical</div>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><a href="#!">Documentation</a></li>
-                                            <li class="mb-2"><a href="#!">Changelog</a></li>
-                                            <li class="mb-2"><a href="#!">Theme Customizer</a></li>
-                                            <li><a href="#!">UI Kit</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                                        <div class="text-uppercase-expanded text-xs mb-4">Includes</div>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><a href="#!">Utilities</a></li>
-                                            <li class="mb-2"><a href="#!">Components</a></li>
-                                            <li class="mb-2"><a href="#!">Layouts</a></li>
-                                            <li class="mb-2"><a href="#!">Code Samples</a></li>
-                                            <li class="mb-2"><a href="#!">Products</a></li>
-                                            <li class="mb-2"><a href="#!">Affiliates</a></li>
-                                            <li><a href="#!">Updates</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="text-uppercase-expanded text-xs mb-4">Legal</div>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><a href="#!">Privacy Policy</a></li>
-                                            <li class="mb-2"><a href="#!">Terms and Conditions</a></li>
-                                            <li><a href="#!">License</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <footer class="footer pt-5 pb-5 mt-auto bg-dark footer-dark">
+                    <div class="container ">
+                        
                         <hr class="my-5" />
                         <div class="row gx-5 align-items-center">
-                            <div class="col-md-6 small">Copyright &copy; Your Website 2021</div>
+                            <div class="col-md-6 small">Copyright © 2023, Layanaan-TI. All rights reserved.</div>
                             <div class="col-md-6 text-md-end small">
                                 <a href="#!">Privacy Policy</a>
                                 &middot;
