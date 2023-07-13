@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
-use function Yajra\DataTables\Services\response;
-
 class AduanController extends Controller
 {
 
@@ -25,7 +23,7 @@ class AduanController extends Controller
    public function index()
    {
       // $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted = 1");
-      $data = Aduan::rightJoin('status', 'aduan.id_status', '=', 'status.id')->where('aduan.deleted', 1)->get();
+      $data = Aduan::select('aduan.*')->leftJoin('status', 'aduan.id_status', '=', 'status.id')->where('aduan.deleted', 1)->orderByDesc('aduan.id')->get();
       return DataTables::of($data)->make(true);
    }
 
@@ -60,9 +58,10 @@ class AduanController extends Controller
       $inventaris = Sperpat::where('deleted', 1)->get();
       $status = Status::where('deleted', 1)->get();
 
-      $data = Aduan::rightJoin('status', 'aduan.id_status', '=', 'status.id')->where('aduan.id', $id)->where('aduan.deleted', 1)->first();
-      $count = DescAduan::rightJoin('status', 'desc_aduan.id_status', '=', 'status.id')
-         ->where('desc_aduan.deleted', 1)->where('desc_aduan.no_aduan', $data->no_aduan)
+      $data = Aduan::leftJoin('status', 'aduan.id_status', '=', 'status.id')->where('aduan.id', $id)->where('aduan.deleted', 1)->first();
+      $count = DescAduan::leftJoin('status', 'desc_aduan.id_status', '=', 'status.id')
+         ->where('desc_aduan.deleted', 1)
+         ->where('desc_aduan.no_aduan', $data->no_aduan)
          ->count();
       return view('views.pengaduan.pengaduanEdit', [
          'data' => $data,

@@ -93,8 +93,6 @@ $("#id_sperpat").select2({
     width: "100%",
 });
 
-
-
 $("#formData").on("submit", function (event) {
     event.preventDefault();
     let id = $("#id").val();

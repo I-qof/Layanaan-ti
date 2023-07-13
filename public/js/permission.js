@@ -25,8 +25,8 @@ var table = $("#tabel-main").DataTable({
             render: function (data, type, row) {
                 return (
                     "<div class='btn-group btn-group-sm' role='group' aria-label='Small button group'>" +
-                    "<button type='button' class='btn btn-default editData permission-update'>Edit</button>" +
-                    "<button type='button' class='btn btn-default hapusData permission-delete'>Hapus</button>" +
+                    "<button type='button' class='btn btn-success editData permission-update'>Edit</button>" +
+                    "<button type='button' class='btn btn-danger hapusData permission-delete'>Hapus</button>" +
                     "</div>"
                 );
             },
