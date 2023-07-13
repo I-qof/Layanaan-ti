@@ -14,7 +14,7 @@
                         <table id="tabel-main" class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col"><button class="btn btn-outline-success" id="openModal">Tambah
+                                    <th scope="col"><button class="btn btn-success" id="openModal">Tambah
                                             Data</button></th>
                                     <th class="text-center">Deskripsi</th>
                                     <th class="text-center">Action</th>

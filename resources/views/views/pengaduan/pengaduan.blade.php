@@ -25,7 +25,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               
+
                             </tbody>
                         </table>
                     </div>
@@ -40,5 +40,4 @@
     <script src="{{ URL::asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
     {{-- <script src="{{ URL::asset('assets/js/data-table.js') }}"></script> --}}
     <script src="{{ URL::asset('js/aduan.js') }}" type="text/javascript"></script>
-
 @endpush
