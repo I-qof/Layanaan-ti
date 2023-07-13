@@ -41,6 +41,7 @@ Route::get('/dashboard', function () {
     return view('views.dashboard');
 });
 Route::get('/aduan/search/{no_aduan}',[AduanController::class,'search']);
+Route::get('/aduan/print/{no_aduan}',[AduanController::class,'print']);
 
 Route::post('/aduan/store', [AduanController::class, 'store']);
 Route::get('/view/aduan', [AduanController::class, 'viewAduan'])->name('viewAduan');
@@ -97,6 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Route::post('/store', [AduanController::class, 'store']);
         Route::get('/updateView/{id}', [AduanController::class, 'updateView']);
         Route::post('/update/{id}', [AduanController::class, 'update']);
+        Route::post('/tindakLanjut/{id}', [AduanController::class, 'tindakLanjut']);
         Route::get('/delete/{id}', [AduanController::class, 'destroy']);
     });
     Route::group(['prefix' => 'desc-aduan'], function () {

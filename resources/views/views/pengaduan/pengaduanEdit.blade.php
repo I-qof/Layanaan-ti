@@ -15,8 +15,9 @@
                     </div>
                     <div class="container-fluid d-flex justify-content-between">
                         <div class="col-lg-3 ps-0">
+                            <input type="text" value="{{ $data->id }}"hidden name="idAduan" id="idAduan">
                             <p class="mt-5"><b>Deskripsi Pengguna</b></p>
-                            <p>Nama Pengguna : {{ $data->tgl_masuk }}</p>
+                            <p>Nama Pengguna : {{ $data->name }}</p>
                             <p>Email Pengguna : {{ $data->email }}</p>
                             <p>No_hp : {{ $data->no_hp }}</p>
                             <p>Lokasi : {{ $data->lokasi }}</p>
@@ -62,10 +63,10 @@
                         <hr>
                     </div>
                     <div class="container-fluid w-100">
-                        <a href="#" class="btn btn-primary float-right mt-4 ms-2"><i
+                        <a href="#" class="btn btn-primary float-right mt-4 ms-2 print"><i
                                 class="ti-printer me-1"></i>Print</a>
-                        {{-- <a href="#" class="btn btn-success float-right mt-4"><i class="ti-export me-1"></i>Send
-                            Invoice</a> --}}
+                        <a class="btn btn-success float-right mt-4 tindakLanjut"><i class="ti-export me-1"></i>Tindak Lanjut
+                        </a>
                     </div>
                 </div>
             </div>
@@ -87,8 +88,7 @@
                             <label for="exampleInputUsername1">Deskripsi</label>
                             <input type="text" id="id_inventaris_pemakai" hidden name="id_inventaris_pemakai">
                             <input type="text" id="id" hidden name="id">
-                            <input type="text" class="form-control" name="deskripsi" id="deskripsi"
-                               >
+                            <input type="text" class="form-control" name="deskripsi" id="deskripsi">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Diagnosa</label>
@@ -115,8 +115,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">sperpat</label>
-                                    <select name="id_sperpat" id="id_sperpat" class="js-example-basic-single w-100"
-                                        >
+                                    <select name="id_sperpat" id="id_sperpat" class="js-example-basic-single w-100">
                                         <option value="">-- Pilih Nomor sperpat --</option>
                                         @foreach ($sperpat as $item)
                                             <option value="{{ $item->id }}">{{ $item->nama_sperpat }}</option>
@@ -125,6 +124,56 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="button" class="btn btn-light cancel" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalTindakLanjut" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAddLabel">Tindak Lanjut Aduan</h5>
+                    <button class="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="formDataTindakLanjut" autocomplete="off">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Status</label>
+                            <select name="id_status" id="id_statusT" class="js-example-basic-single w-100" required>
+                                @if (empty($data->id_status))
+                                    <option value="">-- Pilih Status --</option>
+                                    @foreach ($status as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama_status }}</option>
+                                    @endforeach
+                                @else
+                                    @foreach ($status as $item)
+                                        <option value="{{ $item->id }}" @if (in_array($item->id, [$data->id_status])) selected @endif>{{ $item->nama_status }}</option>
+                                    @endforeach
+                                @endif
+                            </select>   
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Nama Pengambil</label>
+                            <input type="text" id="nama_pengambil" class="form-control" name="nama_pengambil"
+                                value="{{ $data->nama_pengambil }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tanggal Keluar</label>
+                            <input type="datetime-local" class="form-control" name="tgl_keluar" id="tgl_keluar"
+                                value="{{ $data->tgl_keluar }}">
+                        </div>
+
+
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success">Simpan</button>

@@ -109,10 +109,10 @@
                 <div class="modal-body">
                     <div class="card" data-aos="fade-right">
                         <div class="row g-0">
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <img class="img-fluid" src="https://source.unsplash.com/6LBBOwkPzyQ/800x550" alt="...">
-                            </div>
-                            <div class="col-md-8">
+                            </div> --}}
+                            <div class="col-md-12">
                                 <div class="card-body d-flex h-100 flex-column">
                                     <h3 class="card-title fw-bold text-uppercase mb-2">Deskripsi Aduan</h3>
                                     <div class="row">
@@ -137,6 +137,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-success print"><i class="la la-print"></i>Print</button>
                     <button type="button" class="btn btn-danger close" data-dismiss="modal">Oke</button>
                 </div>
             </div>

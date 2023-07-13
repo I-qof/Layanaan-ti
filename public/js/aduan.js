@@ -14,7 +14,7 @@ var table = $("#tabel-main").DataTable({
             render: function (data, type, row) {
                 return (
                     "<div class='btn-group btn-group-sm' role='group' aria-label='Small button group'>" +
-                    "<button type='button' class='btn btn-success editData'>test</button>" +
+                    "<button type='button' class='btn btn-success editData'>Tindak</button>" +
                     "<button type='button' class='btn btn-danger hapusData'>Hapus</button>" +
                     "</div>"
                 );

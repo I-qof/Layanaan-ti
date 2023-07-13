@@ -24,9 +24,10 @@ $("#cari").on("click", function () {
         }
     });
 });
-// $("#tambah").on("click", function () {
-//     $("#modalHasilFailed").modal("show")
-// });
+$(".print").on("click", function () {
+    let id = $("#inp_cari").val(); 
+    window.location.href=APP_URL+"/aduan/print/"+id
+});
 
 $(".cancel").on("click", function () {
     $("#modalHasil").modal("hide");

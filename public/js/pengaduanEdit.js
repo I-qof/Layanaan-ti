@@ -89,8 +89,15 @@ $(".close").on("click", function () {
 $("#id_status").select2({
     width: "100%",
 });
+$("#id_statusT").select2({
+    width: "100%",
+});
 $("#id_sperpat").select2({
     width: "100%",
+});
+$(".tindakLanjut").on("click", function () {
+    $("#formData").trigger("reset");
+    $("#modalTindakLanjut").modal("show");
 });
 
 $("#formData").on("submit", function (event) {
@@ -128,4 +135,45 @@ $("#formData").on("submit", function (event) {
            
         },
     });
+});
+$("#formDataTindakLanjut").on("submit", function () {
+    let id = $("#idAduan").val();
+    $.ajax({
+        type: "POST",
+        url: APP_URL + "/aduan/tindakLanjut/" + id,
+        data: $("#formDataTindakLanjut").serialize(),
+
+        success: function (response) {
+            table.draw(false);
+
+            $("#modalTindakLanjut").modal("hide");
+            $("#formDataTindakLanjut").trigger("reset");
+            location.reload()
+            $.toast({
+                heading: "Info",
+                text: "Data berhasil disimpan!",
+                showHideTransition: "slide",
+                icon: "info",
+                loaderBg: "#46c35f",
+                position: "top-right",
+            });
+           
+        },
+        error: function (data) {
+            $.toast({
+                heading: "Info",
+                text: "Error!",
+                showHideTransition: "slide",
+                icon: "info",
+                loaderBg: "#46c35f",
+                position: "top-right",
+            });
+           
+        },
+    });
+});
+
+$(".print").on("click", function () {
+    let id = $("#no_aduan").val(); 
+    window.location.href=APP_URL+"/aduan/print/"+id
 });
