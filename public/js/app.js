@@ -22,30 +22,6 @@ $.ajax({
             permissions.forEach((elem) => {
                 $("." + elem.name).show();
             });
-
-            switch (permission.name) {
-                case "menu-inspeksi-request":
-                    $("#menu-inspeksi-request").show();
-                    break;
-                case "menu-rekomendasi-teknik":
-                    $("#menu-rekomendasi-teknik").show();
-                    break;
-                case "menu-digital-docs":
-                    $("#menu-digital-docs").show();
-                    break;
-                case "menu-rbi":
-                    $("#menu-rbi").show();
-                    break;
-                case "menu-app":
-                    $("#menu-app").show();
-                    break;
-                case "menu-master-data":
-                    $("#menu-master-data").show();
-                    break;
-
-                default:
-                    break;
-            }
         });
     },
 });

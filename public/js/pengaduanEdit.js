@@ -46,13 +46,22 @@ var table = $("#tabel-main").DataTable({
             render: function (data, type, row) {
                 return (
                     "<div class='btn-group btn-group-sm' role='group' aria-label='Small button group'>" +
-                    "<button type='button' class='btn btn-success editData'>TL</button>" +
+                    "<button type='button' class='btn btn-success editData aduan-tindak-lanjut'>TL</button>" +
                     "</div>"
                 );
             },
             className: "text-center",
         },
     ],
+    drawCallback: function () {
+      
+        $(".aduan-tindak-lanjut").hide()
+
+        let menus = JSON.parse(localStorage.getItem("menus"));
+        menus.forEach((elem) => {
+            $("." + elem.name).show();
+        });
+    },
 });
 $("#tabel-main").on("click", ".editData", function (e) {
     e.preventDefault();
