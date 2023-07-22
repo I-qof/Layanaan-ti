@@ -8,7 +8,7 @@ use App\Models\DescAduan;
 use App\Models\Inventaris;
 use App\Models\Sperpat;
 use App\Models\Status;
-use Barryvdh\DomPDF\Facade\Pdf as BarryvdhPdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,41 +23,53 @@ class AduanController extends Controller
    public function index()
    {
       // $data = DB::connection('mysql')->select("SELECT * FROM aduan where deleted = 1");
-      $data = Aduan::select('aduan.*','status.nama_status','status.color')->leftJoin('status', 'aduan.id_status', '=', 'status.id')->where('aduan.deleted', 1)->orderByDesc('aduan.id')->get();
+      $data = Aduan::select('aduan.*', 'status.nama_status', 'status.color')
+         ->leftJoin('status', 'aduan.id_status', '=', 'status.id')
+         ->where('aduan.deleted', 1)->orderByDesc('aduan.id')->get();
       return DataTables::of($data)->make(true);
    }
 
    public function search($no_aduan)
    {
-      $data = Aduan::where('no_aduan', 'like', "%{$no_aduan}%")->first();
-      if($data==null){
-         abort(404,'data tidak ditemukan');
+      $data = Aduan::select('aduan.*', 'status.nama_status', 'status.color', 'users.name')
+         ->where('no_aduan', 'like', "%{$no_aduan}%")
+         ->leftJoin('status', 'aduan.id_status', '=', 'status.id')
+         ->leftJoin('users', 'aduan.email', '=', 'users.email')
+         ->first();
+      if ($data == null) {
+         abort(404, 'data tidak ditemukan');
       }
       return response()->json($data);
    }
-   public function print($no_aduan){
-      $data = Aduan::where('no_aduan', 'like', "%{$no_aduan}%")->first();
-     
-      $count = DescAduan::leftJoin('status', 'desc_aduan.id_status', '=', 'status.id')
-      ->where('desc_aduan.deleted', 1)
-      ->where('desc_aduan.no_aduan', $data->no_aduan)
-      ->count();
+   public function print($no_aduan)
+   {
+      $data = Aduan::select('aduan.*', 'status.nama_status', 'status.color', 'users.name')
+         ->where('no_aduan', 'like', "%{$no_aduan}%")
+         ->leftJoin('status', 'aduan.id_status', '=', 'status.id')
+         ->leftJoin('users', 'aduan.email', '=', 'users.email')
+         ->first();
 
-      $desc = DescAduan::select('desc_aduan.*', 'status.nama_status', 'status.color', 'users.name as name','inventaris.no_inventaris')
-      ->leftJoin('inventaris', 'desc_aduan.id_inventaris', '=', 'inventaris.id')
-      ->leftJoin('status', 'desc_aduan.id_status', '=', 'status.id')
-      ->leftJoin('users', 'desc_aduan.id_teknisi', '=', 'users.id')
-      ->where('desc_aduan.deleted', 1)
-      ->where('desc_aduan.no_aduan', $no_aduan)
-      ->orderByDesc('desc_aduan.id') // Mengurutkan berdasarkan id secara descending
-      ->get();
-      $nama =$data->id .'/'.$data->tgl_masuk . ' -Laporan-Aduan.pdf';
+      $count = DescAduan::select('desc_aduan.*', 'status.nama_status')
+         ->leftJoin('status', 'desc_aduan.id_status', '=', 'status.id')
+         ->where('desc_aduan.deleted', 1)
+         ->where('desc_aduan.no_aduan', $data->no_aduan)
+         ->count();
 
-      $detail = ['data'=>$data,'total' => $count,'desc'=>$desc];
-      $pdf = BarryvdhPdf::loadview('views.pengaduan.aduan_print',$detail);
-    	return $pdf->download($nama);
-   //   return view('views.pengaduan.aduan_print',$detail);
-      
+      $desc = DescAduan::select('desc_aduan.*', 'status.nama_status', 'status.color', 'users.name as name', 'inventaris.no_inventaris')
+         ->leftJoin('inventaris', 'desc_aduan.id_inventaris', '=', 'inventaris.id')
+         ->leftJoin('status', 'desc_aduan.id_status', '=', 'status.id')
+         ->leftJoin('users', 'desc_aduan.id_teknisi', '=', 'users.id')
+         ->where('desc_aduan.deleted', 1)
+         ->where('desc_aduan.no_aduan', $no_aduan)
+         ->orderByDesc('desc_aduan.id') // Mengurutkan berdasarkan id secara descending
+         ->get();
+      $nama = $data->id . '/' . $data->tgl_masuk . ' -Laporan-Aduan.pdf';
+
+      $detail = ['data' => $data, 'total' => $count, 'desc' => $desc];
+      $pdf = Pdf::loadview('views.pengaduan.aduan_print', $detail);
+      return $pdf->download($nama);
+      //   return view('views.pengaduan.aduan_print',$detail);
+
    }
 
    public function view()
@@ -71,7 +83,7 @@ class AduanController extends Controller
    public function add()
    {
       $inventaris = Inventaris::where('deleted', 1)->get();
-      $random = Str::random(40);
+      $random = Str::random(7);
       return view('views.pengaduan.pengaduanAdd', [
          'no_aduan' => $random,
          'inventaris' => $inventaris
@@ -82,15 +94,15 @@ class AduanController extends Controller
       $inventaris = Sperpat::where('deleted', 1)->get();
       $status = Status::where('deleted', 1)->get();
 
-      $data = Aduan::select('aduan.*','status.nama_status','status.color','users.name',)
-      ->leftJoin('status', 'aduan.id_status', '=', 'status.id')
-      ->leftJoin('users','aduan.email','=','users.email')
-      ->where('aduan.id', $id)->where('aduan.deleted', 1)->first();
+      $data = Aduan::select('aduan.*', 'status.nama_status', 'status.color', 'users.name',)
+         ->leftJoin('status', 'aduan.id_status', '=', 'status.id')
+         ->leftJoin('users', 'aduan.email', '=', 'users.email')
+         ->where('aduan.id', $id)->where('aduan.deleted', 1)->first();
       $count = DescAduan::leftJoin('status', 'desc_aduan.id_status', '=', 'status.id')
          ->where('desc_aduan.deleted', 1)
          ->where('desc_aduan.no_aduan', $data->no_aduan)
          ->count();
-         // dd($data);
+      // dd($data);
       return view('views.pengaduan.pengaduanEdit', [
          'data' => $data,
          'total' => $count,
@@ -138,8 +150,8 @@ class AduanController extends Controller
       // dd($dataAduan);
       try {
          foreach ($dataEmail as $key => $value) {
-            
-            $this->sendMail($value,$dataAduan);
+
+            $this->sendMail($value, $dataAduan);
          }
       } catch (\Throwable $th) {
          dd($th);
@@ -147,7 +159,7 @@ class AduanController extends Controller
       return response()->json($data);
    }
 
-   public function sendMail($email,$data)
+   public function sendMail($email, $data)
    {
       // dd($data);
       $mailData = [
@@ -157,7 +169,7 @@ class AduanController extends Controller
          'lokasi' => $data->lokasi,
          'email' => $data->email,
          'email_atasan' => $data->email_atasan,
-        
+
       ];
 
       Mail::to($email)->send(new AppAduan($mailData));
@@ -211,16 +223,17 @@ class AduanController extends Controller
       return response()->json($data);
    }
 
-   public function tindakLanjut($id,Request $request){
-      $input = [ 
-         'id_status'=>$request->id_status,
-         'nama_pengambil'=>$request->nama_pengambil,
-         'tgl_keluar'=>$request->tgl_keluar,
+   public function tindakLanjut($id, Request $request)
+   {
+      $input = [
+         'id_status' => $request->id_status,
+         'nama_pengambil' => $request->nama_pengambil,
+         'tgl_keluar' => $request->tgl_keluar,
 
       ];
 
-      $data = Aduan::where('id',$id)->first();
+      $data = Aduan::where('id', $id)->first();
       $update = $data->update($input);
       return response()->json($update);
-   } 
+   }
 }

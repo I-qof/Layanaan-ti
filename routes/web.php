@@ -32,6 +32,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/me',[UserRoleController::class,'me']);
+
 // Route::get('/',[HomeController::class,'index'])->name('home');
 
 Auth::routes();
@@ -69,26 +71,27 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/permission/view', [PermissionController::class, 'view'])->name('permission');
 
     //user-management
-    Route::group(['prefix'=>'userroles'],function(){
-        Route::get('/', [UserRoleController::class,'index']);
-        Route::get('/{id}', [UserRoleController::class,'getById']);
-        Route::post('/', [UserRoleController::class,'store']);
-        Route::patch('/update', [UserRoleController::class,'update']);
+    Route::group(['prefix' => 'userroles'], function () {
+        Route::get('/get', [UserRoleController::class, 'index']);
+        Route::get('/{id}', [UserRoleController::class, 'getById']);
+        Route::get('/delete/{id}', [UserRoleController::class, 'destroy']);
+        Route::post('/store', [UserRoleController::class, 'store']);
+        Route::patch('/update', [UserRoleController::class, 'update']);
     });
-    Route::group(['prefix'=>'role'],function(){
-        Route::get('/', [RoleController::class,'get']);
-        Route::get('/getById/{id}', [RoleController::class,'getById']);
-        Route::post('/store', [RoleController::class,'store']);
-        Route::patch('/update/{id}', [RoleController::class,'update']);
-        Route::delete('/delete/{id}', [RoleController::class,'delete']);
+    Route::group(['prefix' => 'role'], function () {
+        Route::get('/get', [RoleController::class, 'get']);
+        Route::get('/getById/{id}', [RoleController::class, 'getById']);
+        Route::post('/store', [RoleController::class, 'store']);
+        Route::patch('/update/{id}', [RoleController::class, 'update']);
+        Route::delete('/delete/{id}', [RoleController::class, 'delete']);
     });
-    Route::group(['prefix'=>'permissions'],function(){
-        Route::get('/', [PermissionController::class,'get']);
-        Route::get('/index', [PermissionController::class,'index']);
-        Route::get('/getById/{id}', [PermissionController::class,'getById']);
-        Route::post('/store', [PermissionController::class,'store']);
-        Route::delete('/delete/{id}', [PermissionController::class,'destroy']);
-        Route::get('/update/{id}', [PermissionController::class,'update']);
+    Route::group(['prefix' => 'permissions'], function () {
+        Route::get('/get', [PermissionController::class, 'get']);
+        Route::get('/index', [PermissionController::class, 'index']);
+        Route::get('/getById/{id}', [PermissionController::class, 'getById']);
+        Route::post('/store', [PermissionController::class, 'store']);
+        Route::delete('/delete/{id}', [PermissionController::class, 'destroy']);
+        Route::get('/update/{id}', [PermissionController::class, 'update']);
     });
 
     // Route Aduan

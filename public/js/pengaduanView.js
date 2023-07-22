@@ -13,10 +13,10 @@ $("#cari").on("click", function () {
                 $("#email_atasan").html(response.email_atasan);
                 $("#tgl_masuk").html(response.tgl_masuk);
                 $("#tgl_keluar").html(response.tgl_keluar);
-                $("#id_status").html(response.id_status);
+                $("#nama_status").html(response.nama_status);
                 $("#nama_pengambil").html(response.nama_pengambil);
 
-                $("#email").val(response.email);
+                $("#email").html(response.email);
                 $("#modalHasil").modal("show");
         },
         error:function(response){

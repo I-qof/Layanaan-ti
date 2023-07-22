@@ -9,18 +9,18 @@ var table = $("#tabel-main").DataTable({
         method: "GET",
     },
     columns: [
-        {
-            data: null,
-            render: function (data, type, row) {
-                return (
-                    "<div class='btn-group btn-group-sm' role='group' aria-label='Small button group'>" +
-                    "<button type='button' class='btn btn-success editData aduan-tindak-lanjut'>Tindak</button>" +
-                    "<button type='button' class='btn btn-danger hapusData aduan-tindak-lanjut'>Hapus</button>" +
-                    "</div>"
-                );
-            },
-            className: "text-center",
-        },
+        // {
+        //     data: null,
+        //     render: function (data, type, row) {
+        //         return (
+        //             "<div class='btn-group btn-group-sm' role='group' aria-label='Small button group'>" +
+        //             "<button type='button' class='btn btn-success editData'>Tindak</button>" +
+        //             "<button type='button' class='btn btn-danger hapusData'>Hapus</button>" +
+        //             "</div>"
+        //         );
+        //     },
+        //     className: "text-center",
+        // },
         {
             data: "id",
             render: function (data, type, row, meta) {
@@ -32,6 +32,9 @@ var table = $("#tabel-main").DataTable({
         {
             data: "no_aduan",
             className: "text-center",
+            render:function(data,meta,type,row){
+                return(`${data.substr(0,7)}`)
+            }
         },
         {
             data: "email",
@@ -52,35 +55,24 @@ var table = $("#tabel-main").DataTable({
         {
             data: "nama_status",
             className: "text-center",
-            render: function (data, type, row, meta) {
-                return (
-                    "<div class='badge badge-primary' style='background-color:" +
-                    row.color +
-                    ";border:" +
-                    row.color +
-                    ";font-weight: bold '><p style='color:#ffff'>" +
-                    data +
-                    "</p></div>"
-                );
+            render: function(data, type, row, meta) {
+              return (
+                "<div class='badge badge-primary' style='background-color:" +
+                row.color +
+                ";border-color:" + // Perbaiki dari "border" menjadi "border-color"
+                row.color +
+                ";font-weight:bold;'><p style='color:#fff;'>" + // Perbaiki "color:#ffff" menjadi "color:#fff;"
+                data +
+                "</p></div>"
+              );
             },
-        },
+          },
+          
         {
             data: "nama_pengambil",
             className: "text-center",
         },
     ],
-    drawCallback: function () {
-        // $(".permintaan-tindak-lanjut").css({
-        //     display: "none",
-        //     visibility: "hidden",
-        // });
-        $(".aduan-tindak-lanjut").hide()
-
-        let menus = JSON.parse(localStorage.getItem("menus"));
-        menus.forEach((elem) => {
-            $("." + elem.name).show();
-        });
-    },
 });
 
 $("#tabel-main").on("click", ".editData", function () {
