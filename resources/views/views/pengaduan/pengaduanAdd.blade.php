@@ -94,11 +94,12 @@
                                                 <div class="form-group">
                                                     <div class="form-group">
                                                         <label>Email Atasan</label>
-                                                        <input type="email" id="email_atasan" name="email_atasan" required
-                                                            class="form-control" placeholder="Masukkan email atasan anda ">
+                                                        <input type="email" id="email_atasan" name="email_atasan"
+                                                            required class="form-control"
+                                                            placeholder="Masukkan email atasan anda ">
                                                     </div>
                                                     <label>Deskripsi Keluhan</label>
-                                                    
+
                                                     <textarea type="text" class="form-control w-100" id="keluhan" required name="keluhan" style="width: 100%"
                                                         aria-describedby="text" placeholder="Masukkan deskripsi keluhan anda"></textarea>
                                                 </div>
@@ -164,8 +165,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="modalAdd" role="dialog" aria-labelledby="modalAddLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-md-down" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -176,12 +176,13 @@
                 </div>
                 <form id="formData" autocomplete="off">
                     @csrf
-                    <div class="modal-body">
+                    <div class="modal-body" >
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Nama Inventaris</label>
+                            <label for="exampleInputEmail1">Nomor Inventaris</label>
                             <input type="test" id="no_aduan" name="no_aduan" class="form-control"
                                 value="{{ $no_aduan }}" hidden required>
-                            <select name="id_inventaris" id="id_inventaris" class="js-example-basic-single w-100" required>
+                            <select name="id_inventaris" id="id_inventaris" class="js-example-basic-single w-100"
+                                required>
                                 <option value="">-- Pilih Nomor Inventaris</option>
                                 @foreach ($inventaris as $item)
                                     <option value="{{ $item->id }}">{{ $item->no_inventaris }}</option>
@@ -231,10 +232,10 @@
     <script src="{{ URL::asset('assets/vendors/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ URL::asset('assets/vendors/jquery-toast-plugin/jquery.toast.min.js') }}"></script>
     <script src="{{ URL::asset('assets/vendors/select2/select2.min.js') }}"></script>
-    
-        <script src="{{ URL::asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
-        <script src="{{ URL::asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
-    
+
+    <script src="{{ URL::asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
+    <script src="{{ URL::asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
+
     <!-- endinject -->
     <!-- Custom js for this page-->
     {{-- 
@@ -245,9 +246,9 @@
     {{-- <script src="{{ URL::asset('assets/js/data-table.js') }}"></script> --}}
     {{-- <script src="{{ URL::asset('js/aduan.js') }}" type="text/javascript"></script> --}}
     <!-- End custom js for this page-->
-    
-    
-    
+
+
+
     <script src="{{ URL::asset('js/app.js') }}"></script>
     <script src="{{ URL::asset('js/pengaduanAdd.js') }}" type="text/javascript"></script>
 

@@ -95,92 +95,13 @@
                     </div>
                 </section>
 
-                <section class="bg-light py-10">
-                    <div class="container px-5">
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-6">
-                                <div class="text-center">
-                                    <div class="text-xs text-uppercase-expanded text-primary mb-2">Fitur Aplikasi</div>
-                                    <h2 class="mb-5">Kami memiliki solusi sederhana untuk masalah kompleks</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row gx-5">
-                            <div class="col-lg-4 col-md-6 mb-5" data-aos="fade-up">
-                                <a class="card text-center text-decoration-none h-100 lift" href="#!">
-                                    <div class="card-body py-5">
-                                        <div class="icon-stack icon-stack-lg bg-green-soft text-green mb-4"><i
-                                                data-feather="layers"></i></div>
-                                        <h5>Komponen</h5>
-                                        <p class="card-text small">Produk kami penuh dengan komponen yang dapat
-                                            disesuaikan dan diperluas.</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mb-5" data-aos="fade-up" data-aos-delay="100">
-                                <a class="card text-center text-decoration-none h-100 lift" href="#!">
-                                    <div class="card-body py-5">
-                                        <div class="icon-stack icon-stack-lg bg-red-soft text-red mb-4"><i
-                                                data-feather="tool"></i></div>
-                                        <h5>Utilitas</h5>
-                                        <p class="card-text small">Kelas utilitas yang kuat memudahkan penggunaan
-                                            kustomisasi pada produk Anda.</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mb-5" data-aos="fade-up" data-aos-delay="150">
-                                <a class="card text-center text-decoration-none h-100 lift" href="#!">
-                                    <div class="card-body py-5">
-                                        <div class="icon-stack icon-stack-lg bg-yellow-soft text-yellow mb-4"><i
-                                                data-feather="layout"></i></div>
-                                        <h5>Tata Letak</h5>
-                                        <p class="card-text small">Tata letak berbasis fleksibilitas kami menawarkan
-                                            pendekatan responsif yang indah.</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0" data-aos="fade-up">
-                                <a class="card text-center text-decoration-none h-100 lift" href="#!">
-                                    <div class="card-body py-5">
-                                        <div class="icon-stack icon-stack-lg bg-purple-soft text-purple mb-4"><i
-                                                data-feather="book"></i></div>
-                                        <h5>Dokumentasi</h5>
-                                        <p class="card-text small">Kode kami telah didokumentasikan lengkap dengan
-                                            petunjuk dan contoh penggunaan.</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mb-5 mb-md-0" data-aos="fade-up" data-aos-delay="100">
-                                <a class="card text-center text-decoration-none h-100 lift" href="#!">
-                                    <div class="card-body py-5">
-                                        <div class="icon-stack icon-stack-lg bg-blue-soft text-blue mb-4"><i
-                                                data-feather="code"></i></div>
-                                        <h5>Snippet Kode</h5>
-                                        <p class="card-text small">Gunakan snippet kode untuk dengan mudah menambahkan
-                                            komponen baru ke proyek Anda.</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
-                                <a class="card text-center text-decoration-none h-100 lift" href="#!">
-                                    <div class="card-body py-5">
-                                        <div class="icon-stack icon-stack-lg bg-orange-soft text-orange mb-4"><i
-                                                data-feather="package"></i></div>
-                                        <h5>Plugin</h5>
-                                        <p class="card-text small">Kami telah mengimplementasikan plugin pihak ketiga
-                                            yang kuat untuk fungsionalitas tambahan.</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
 
 
              
             </main>
         </div>
-        <div id="layoutDefault_footer">
+        <div class="mt-10" id="layoutDefault_footer">
             <footer class="footer pt-5 pb-5 mt-auto bg-dark footer-dark">
                 <div class="container ">
                     <div class="row gx-5">

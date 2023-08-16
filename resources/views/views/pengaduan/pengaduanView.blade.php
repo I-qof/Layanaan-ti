@@ -83,7 +83,7 @@
         <div id="layoutDefault_footer">
             <footer class="footer pt-5 pb-5 mt-auto bg-dark footer-dark">
                 <div class="container">
-                    
+
                     <div class="row  align-items-center">
                         <div class="col-md-6 small">Copyright © 2023, Layanaan-TI. All rights reserved.</div>
                         <div class="col-md-6 text-md-end small">
@@ -97,7 +97,7 @@
         </div>
     </div>
     {{-- modal --}}
-    <div class="modal fade" id="modalHasil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalHasil" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -143,9 +143,9 @@
             </div>
         </div>
     </div>
-    
+
     </div>
-    <div class="modal fade" id="modalHasilFailed" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="modalHasilFailed" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">

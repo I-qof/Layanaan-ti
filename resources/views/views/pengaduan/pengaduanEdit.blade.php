@@ -114,9 +114,9 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">sperpat</label>
+                                    <label for="exampleInputEmail1">sparepat</label>
                                     <select name="id_sperpat" id="id_sperpat" class="js-example-basic-single w-100">
-                                        <option value="">-- Pilih Nomor sperpat --</option>
+                                        <option value="">-- Pilih Nomor sparepat --</option>
                                         @foreach ($sperpat as $item)
                                             <option value="{{ $item->id }}">{{ $item->nama_sperpat }}</option>
                                         @endforeach
@@ -133,8 +133,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modalTindakLanjut" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="modalTindakLanjut" role="dialog" aria-labelledby="modalAddLabel" aria-hidden="true">
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -156,11 +155,13 @@
                                     @endforeach
                                 @else
                                     @foreach ($status as $item)
-                                        <option value="{{ $item->id }}" @if (in_array($item->id, [$data->id_status])) selected @endif>{{ $item->nama_status }}</option>
+                                        <option value="{{ $item->id }}"
+                                            @if (in_array($item->id, [$data->id_status])) selected @endif>{{ $item->nama_status }}
+                                        </option>
                                     @endforeach
                                 @endif
-                            </select>   
-                            
+                            </select>
+
                         </div>
                         <div class="form-group">
                             <label for="exampleInputUsername1">Nama Pengambil</label>

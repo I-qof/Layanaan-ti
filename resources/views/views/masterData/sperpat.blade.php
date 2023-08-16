@@ -6,7 +6,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Data Sperpat</h4>
+            <h4 class="card-title">Data Sparepat</h4>
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
@@ -14,14 +14,14 @@
                             <thead>
                                 <tr>
                                     <th><button class="btn btn-success" id="openModal">Tambah Data</button></th>
-                                    <th>Nama Sperpat</th>
+                                    <th>Nama Sparepat</th>
                                     <th>No. Inventaris</th>
                                     <th>Status Pemakaian</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                               
+
                             </tbody>
                         </table>
                     </div>
@@ -30,8 +30,8 @@
         </div>
     </div>
 
-     {{-- modal --}}
-     <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel" aria-hidden="true">
+    {{-- modal --}}
+    <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-md-down" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -44,9 +44,10 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="exampleInputUsername1">Nama Sperpat</label>
+                            <label for="exampleInputUsername1">Nama Sparepat</label>
                             <input type="text" id="id" hidden name="id">
-                            <input type="text" class="form-control" name="nama_sperpat" id="nama_sperpat" placeholder="Nama Sperpat">
+                            <input type="text" class="form-control" name="nama_sperpat" id="nama_sperpat"
+                                placeholder="Nama Sparepat">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Jenis Barang</label>
@@ -80,5 +81,4 @@
     <script src="{{ URL::asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
     <script src="{{ URL::asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
     <script src="{{ URL::asset('js/sperpat.js') }}" type="text/javascript"></script>
-
 @endpush

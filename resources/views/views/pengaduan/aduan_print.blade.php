@@ -136,7 +136,6 @@
                         <div class="container-fluid d-flex justify-content-between">
                             <div class="col-lg-12" style="padding-left: 15px">
                                 <p class="mt-5"><b>Deskripsi Pengguna</b></p>
-                                <p>Nama Pengguna : {{ $data->name }}</p>
                                 <p>Email Pengguna : {{ $data->email }}</p>
                                 <p>No_hp : {{ $data->no_hp }}</p>
                                 <p>Lokasi : {{ $data->lokasi }}</p>

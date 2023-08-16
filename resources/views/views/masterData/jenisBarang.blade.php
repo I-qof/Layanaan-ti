@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <label for="exampleInputUsername1">Nama Jenis Barang</label>
                             <input type="text" id="id" hidden name="id">
-                            <input type="text" class="form-control" name="nama_jenis" id="nama_jenis" placeholder="Nama Status">
+                            <input type="text" class="form-control" name="nama_jenis" id="nama_jenis" placeholder="Nama barang">
                         </div>
                         
                     </div>

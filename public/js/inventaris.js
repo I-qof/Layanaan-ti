@@ -51,7 +51,7 @@ var table = $("#tabel-main").DataTable({
     ],
 });
 
-$("#id_jenis").select2();
+$("#id_jenis").select2({ width: "100%", dropdownParent: "#modalAdd" });
 
 $("#tabel-main").on("click", ".editData", function () {
     data = table.rows($(this).closest("tr").index()).data()[0];
@@ -71,7 +71,6 @@ $("#openModal").on("click", function (e) {
     $("#id_jenis").val("").trigger("change");
     $("#modalAdd").modal("show");
 });
-
 
 $("#formData").on("submit", function (event) {
     event.preventDefault();

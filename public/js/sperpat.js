@@ -17,26 +17,25 @@ var table = $("#tabel-main").DataTable({
             className: "text-center",
         },
 
-        {   
+        {
             data: "nama_sperpat",
             className: "text-center",
         },
-        {   
+        {
             data: "no_inventaris",
             className: "text-center",
         },
-        {   
+        {
             data: "status_pemakaian",
             className: "text-center",
-            render:function(data,type,meta,row){
-                if(data == 1){
-                    return("<div class='badge badge-danger'>Tidak dipakai</div>");
+            render: function (data, type, meta, row) {
+                if (data == 1) {
+                    return "<div class='badge badge-danger'>Tidak dipakai</div>";
                 }
-                return("<div class='badge badge-success'>Sedang dipakai</div>")
-            }
+                return "<div class='badge badge-success'>Sedang dipakai</div>";
+            },
         },
-       
-      
+
         {
             data: null,
             render: function (data, type, row) {
@@ -52,8 +51,7 @@ var table = $("#tabel-main").DataTable({
     ],
 });
 
-$("#id_jenis").select2();
-
+$("#id_jenis").select2({ width: "100%", dropdownParent: ".modal-content" });
 
 $("#tabel-main").on("click", ".editData", function () {
     data = table.rows($(this).closest("tr").index()).data()[0];
@@ -69,7 +67,7 @@ $("#openModal").on("click", function () {
     id = 0;
     $("#formData").trigger("reset");
     $("#id_jenis").val("").trigger("change");
-    $("#modalAdd").modal("show")
+    $("#modalAdd").modal("show");
 });
 
 $("#formData").on("submit", function (event) {
@@ -79,19 +77,19 @@ $("#formData").on("submit", function (event) {
             type: "POST",
             url: APP_URL + "/sperpat/store",
             data: $("#formData").serialize(),
-            
+
             success: function (response) {
                 table.draw(false);
-            
+
                 $("#modalAdd").modal("hide");
                 $.toast({
-                    heading: 'Info',
-                    text: 'Data berhasil disimpan!',
-                    showHideTransition: 'slide',
-                    icon: 'info',
-                    loaderBg: '#46c35f',
-                    position: 'top-right'
-                  })
+                    heading: "Info",
+                    text: "Data berhasil disimpan!",
+                    showHideTransition: "slide",
+                    icon: "info",
+                    loaderBg: "#46c35f",
+                    position: "top-right",
+                });
                 table.draw();
             },
             error: function (data) {
@@ -112,24 +110,22 @@ $("#formData").on("submit", function (event) {
             type: "POST",
             url: APP_URL + "/sperpat/update/" + id,
             data: $("#formData").serialize(),
-            
+
             success: function (response) {
                 table.draw(false);
-            
+
                 $("#modalAdd").modal("hide");
                 $.toast({
-                    heading: 'Info',
-                    text: 'Data berhasil disimpan!',
-                    showHideTransition: 'slide',
-                    icon: 'info',
-                    loaderBg: '#46c35f',
-                    position: 'top-right'
-                  })
+                    heading: "Info",
+                    text: "Data berhasil disimpan!",
+                    showHideTransition: "slide",
+                    icon: "info",
+                    loaderBg: "#46c35f",
+                    position: "top-right",
+                });
                 table.draw();
             },
             error: function (data) {
-            
-
                 var msg = data.responseJSON;
                 var message = "";
 
@@ -154,52 +150,52 @@ $(".close").on("click", function () {
 
 $("#tabel-main").on("click", ".hapusData", function () {
     // alert("halo");
-      data = table.rows($(this).closest('tr').index()).data()[0];
-      swal({
-        title: 'Hapus Data?',
+    data = table.rows($(this).closest("tr").index()).data()[0];
+    swal({
+        title: "Hapus Data?",
         text: "Data yang dihapus tidak dapat dikembalikan!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3f51b5',
-        cancelButtonColor: '#ff4081',
-        confirmButtonText: 'Great ',
+        confirmButtonColor: "#3f51b5",
+        cancelButtonColor: "#ff4081",
+        confirmButtonText: "Great ",
         buttons: {
-          cancel: {
-            text: "Cancel",
-            value: null,
-            visible: true,
-            className: "btn btn-danger",
-            closeModal: true,
-          },
-          confirm: {
-            text: "OK",
-            value: true,
-            visible: true,
-            className: "btn btn-primary",
-            closeModal: true
-          }
-        }
-      }).then(function(result){
-        if(result){
+            cancel: {
+                text: "Cancel",
+                value: null,
+                visible: true,
+                className: "btn btn-danger",
+                closeModal: true,
+            },
+            confirm: {
+                text: "OK",
+                value: true,
+                visible: true,
+                className: "btn btn-primary",
+                closeModal: true,
+            },
+        },
+    }).then(function (result) {
+        if (result) {
             // alert("hy")
             $.ajax({
-                type : 'GET',
-                url  : APP_URL + '/sperpat/delete/' + data.id,
-                success :  function(response){
+                type: "GET",
+                url: APP_URL + "/sperpat/delete/" + data.id,
+                success: function (response) {
                     $.toast({
-                        heading: 'Info',
-                        text: 'Data berhasil dihapus!',
-                        showHideTransition: 'slide',
-                        icon: 'info',
-                        loaderBg: '#46c35f',
-                        position: 'top-right'
-                      })
+                        heading: "Info",
+                        text: "Data berhasil dihapus!",
+                        showHideTransition: "slide",
+                        icon: "info",
+                        loaderBg: "#46c35f",
+                        position: "top-right",
+                    });
                     table.draw();
                 },
-                error: function(data){
+                error: function (data) {
                     toastr["error"]("Masih terdapat Error!", "Error");
-                }
+                },
             });
-          }
-      })
+        }
+    });
 });

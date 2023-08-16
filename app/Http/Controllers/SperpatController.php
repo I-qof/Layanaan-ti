@@ -40,7 +40,7 @@ class SperpatController extends Controller
           'no_inventaris' => $request->no_inventaris,
           'id_user_pemakai' => $request->id_user_pemakai,
           'deskripsi' => $request->deskripsi,
-          'status_pemakaian' => $request->status_pemakaian,
+         //  'status_pemakaian' => $request->status_pemakaian,
           
  
        ];

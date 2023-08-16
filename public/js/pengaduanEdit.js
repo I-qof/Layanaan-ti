@@ -5,8 +5,8 @@ var table = $("#tabel-main").DataTable({
     processing: true,
 
     autoWidth: false,
-    bfilter:false,
-    binfo:false,
+    bfilter: false,
+    binfo: false,
     ajax: {
         url: APP_URL + "/desc-aduan/get/" + $("#no_aduan").val(),
         method: "GET",
@@ -54,8 +54,7 @@ var table = $("#tabel-main").DataTable({
         },
     ],
     drawCallback: function () {
-      
-        $(".aduan-tindak-lanjut").hide()
+        $(".aduan-tindak-lanjut").hide();
 
         let menus = JSON.parse(localStorage.getItem("menus"));
         menus.forEach((elem) => {
@@ -97,12 +96,15 @@ $(".close").on("click", function () {
 
 $("#id_status").select2({
     width: "100%",
+    dropdownParent: "#modalAdd",
 });
 $("#id_statusT").select2({
     width: "100%",
+    dropdownParent: "#modalTindakLanjut",
 });
 $("#id_sperpat").select2({
     width: "100%",
+    dropdownParent: "#modalAdd",
 });
 $(".tindakLanjut").on("click", function () {
     $("#formData").trigger("reset");
@@ -112,7 +114,7 @@ $(".tindakLanjut").on("click", function () {
 $("#formData").on("submit", function (event) {
     event.preventDefault();
     let id = $("#id").val();
-   
+
     $.ajax({
         type: "POST",
         url: APP_URL + "/desc-aduan/update/" + id,
@@ -141,7 +143,6 @@ $("#formData").on("submit", function (event) {
                 loaderBg: "#46c35f",
                 position: "top-right",
             });
-           
         },
     });
 });
@@ -157,7 +158,7 @@ $("#formDataTindakLanjut").on("submit", function () {
 
             $("#modalTindakLanjut").modal("hide");
             $("#formDataTindakLanjut").trigger("reset");
-            location.reload()
+            location.reload();
             $.toast({
                 heading: "Info",
                 text: "Data berhasil disimpan!",
@@ -166,7 +167,6 @@ $("#formDataTindakLanjut").on("submit", function () {
                 loaderBg: "#46c35f",
                 position: "top-right",
             });
-           
         },
         error: function (data) {
             $.toast({
@@ -177,12 +177,11 @@ $("#formDataTindakLanjut").on("submit", function () {
                 loaderBg: "#46c35f",
                 position: "top-right",
             });
-           
         },
     });
 });
 
 $(".print").on("click", function () {
-    let id = $("#no_aduan").val(); 
-    window.location.href=APP_URL+"/aduan/print/"+id
+    let id = $("#no_aduan").val();
+    window.location.href = APP_URL + "/aduan/print/" + id;
 });
