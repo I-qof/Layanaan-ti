@@ -133,7 +133,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modalTindakLanjut" role="dialog" aria-labelledby="modalAddLabel" aria-hidden="true">
+    <div class="modal fade" id="modalTindakLanjut" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">

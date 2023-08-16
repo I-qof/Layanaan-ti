@@ -14,7 +14,7 @@
                <li class="nav-item ">
                    <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                        aria-controls="ui-basic">
-                       <i class="menu-icon mdi mdi-floor-plan"></i>
+                       <i class="menu-icon mdi mdi-face-agent"></i>
                        <span class="menu-title">Pengaduan</span>
                        <i class="menu-arrow"></i>
                    </a>
@@ -59,7 +59,7 @@
                <li class="nav-item">
                    <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false"
                        aria-controls="tables">
-                       <i class="menu-icon mdi mdi-table"></i>
+                       <i class="menu-icon mdi mdi-account"></i>
                        <span class="menu-title">User Management</span>
                        <i class="menu-arrow"></i>
                    </a>
@@ -84,7 +84,7 @@
            @can('menu-master-data', Sperpat::class)
                <li class="nav-item ">
                    <a class="nav-link" data-bs-toggle="collapse" href="#maps" aria-expanded="false" aria-controls="maps">
-                       <i class="menu-icon mdi mdi-google-maps"></i>
+                       <i class="menu-icon mdi mdi-database"></i>
                        <span class="menu-title">Master Data</span>
                        <i class="menu-arrow"></i>
                    </a>

@@ -89,8 +89,10 @@ $("#tabel-main").on("click", ".editData", function (e) {
 
 $(".cancel").on("click", function () {
     $("#modalAdd").modal("hide");
+    $("#modalTindakLanjut").modal("hide");
 });
 $(".close").on("click", function () {
+    $("#modalTindakLanjut").modal("hide");
     $("#modalAdd").modal("hide");
 });
 
